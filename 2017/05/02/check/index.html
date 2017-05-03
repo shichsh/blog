@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件，  1&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;">
+<meta name="description" content="12345678910111213&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;Context&amp;gt;	&amp;lt;Resource name=&quot;jdbc/myoracle&quot; 		auth=&quot;Container&quot;	  	type=&quot;javax.sql.DataSource&quot; 	  	driverClassName=&quot;oracle.jdbc.driver">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaEE JSP配置流程">
-<meta property="og:url" content="http://yoursite.com/2017/05/01/JavaEE JSP配置流程/index.html">
+<meta property="og:title" content="check">
+<meta property="og:url" content="http://yoursite.com/2017/05/02/check/index.html">
 <meta property="og:site_name" content="shichsh">
-<meta property="og:description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件，  1&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;">
-<meta property="og:updated_time" content="2017-05-03T02:45:02.000Z">
+<meta property="og:description" content="12345678910111213&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;Context&amp;gt;	&amp;lt;Resource name=&quot;jdbc/myoracle&quot; 		auth=&quot;Container&quot;	  	type=&quot;javax.sql.DataSource&quot; 	  	driverClassName=&quot;oracle.jdbc.driver">
+<meta property="og:updated_time" content="2017-05-03T02:47:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaEE JSP配置流程">
-<meta name="twitter:description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件，  1&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;">
+<meta name="twitter:title" content="check">
+<meta name="twitter:description" content="12345678910111213&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;Context&amp;gt;	&amp;lt;Resource name=&quot;jdbc/myoracle&quot; 		auth=&quot;Container&quot;	  	type=&quot;javax.sql.DataSource&quot; 	  	driverClassName=&quot;oracle.jdbc.driver">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/01/JavaEE JSP配置流程/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/02/check/"/>
 
 
 
 
 
-  <title>JavaEE JSP配置流程 | shichsh</title>
+  <title>check | shichsh</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -263,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/01/JavaEE JSP配置流程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/02/check/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chengsheng">
@@ -284,7 +284,7 @@
             
             
               
-                JavaEE JSP配置流程
+                check
               
             
           </h1>
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-01T16:45:06-04:00">
-                2017-05-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-02T22:46:52-04:00">
+                2017-05-02
               </time>
             
 
@@ -334,26 +334,7 @@
       
 
       
-        <p>配置环境：<br>Tomcat: apache-tomcat-7.0.34<br>Java: 8.0</p>
-<p>配置步骤：</p>
-<ol>
-<li>解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件，</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;<span class="tag">&lt;<span class="name">Context</span>&gt;</span>	<span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"jdbc/myoracle"</span> 		<span class="attr">auth</span>=<span class="string">"Container"</span>	  	<span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span> 	  	<span class="attr">driverClassName</span>=<span class="string">"oracle.jdbc.driver.OracleDriver"</span>	  	<span class="attr">url</span>=<span class="string">"jdbc:oracle:thin:@**yourpcname**:1521:XE"</span>	  	<span class="attr">username</span>=<span class="string">"yourdatabaseusername"</span> 	  	<span class="attr">password</span>=<span class="string">"yourdatabasepassword"</span> 	  	<span class="attr">maxActive</span>=<span class="string">"20"</span>	  	<span class="attr">maxIdle</span>=<span class="string">"10"</span>	  	<span class="attr">maxWait</span>=<span class="string">"-1"</span>/&gt;</span><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>参数maxWait = -1 意味着当active connection 达到maxActive值后，再得到的request会等待，等待时间forever</p>
-<ol>
-<li><p>配置keystore<br>参考<a href="https://www.mkyong.com/tomcat/how-to-configure-tomcat-to-support-ssl-or-https/" target="_blank" rel="external">mkyong文档</a>配置，完全按照步骤进行，注意keystore和key password密码保持一致。可能会有很多问题，回答完就好。<br>在进行第二步Connector in server.xml之前，把bin中的server复制一份，并重命名为server_old。在粘贴过后，记得更改keystore。</p>
-</li>
-<li><p>新建自己的JavaEE workplace，这里是“JavaEE”文件夹。打开Eclipse, 选择workplace为JavaEE（或切换workplace）。</p>
-</li>
-<li><p>build server: window -&gt; preference -&gt; server -&gt; runtime envrionment -&gt; add -&gt; Tomcat v7.0 -&gt; Tomcat installation directory(browser your Tomcat directory)</p>
-</li>
-<li><p>新建JSP demo: 右键新建dynamic web project -&gt; 输入project name -&gt; next -&gt; next -&gt; check “generate web.xml deployment descriptor”</p>
-</li>
-<li><p>新建空的css文件夹，添加standard bootstrap css files。right click webcontent -&gt; create a .jsp file called “<em>*</em>.jsp”-&gt; remove all contents before &lt;!DOCTYPE&gt; and some contenst after &lt;!DOCTYPE html</p>
-</li>
-</ol>
-<p>完成之后，打开浏览器输入 <a href="http://localhost:8080/project" target="_blank" rel="external">http://localhost:8080/project</a> name/jsp file name</p>
+        <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"jdbc/myoracle"</span> </span></div><div class="line">		<span class="attr">auth</span>=<span class="string">"Container"</span></div><div class="line">	  	<span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span> </div><div class="line">	  	<span class="attr">driverClassName</span>=<span class="string">"oracle.jdbc.driver.OracleDriver"</span></div><div class="line">	  	<span class="attr">url</span>=<span class="string">"jdbc:oracle:thin:@**yourpcname**:1521:XE"</span></div><div class="line">	  	<span class="attr">username</span>=<span class="string">"yourdatabaseusername"</span> </div><div class="line">	  	<span class="attr">password</span>=<span class="string">"yourdatabasepassword"</span> </div><div class="line">	  	<span class="attr">maxActive</span>=<span class="string">"20"</span></div><div class="line">	  	<span class="attr">maxIdle</span>=<span class="string">"10"</span></div><div class="line">	  	<span class="attr">maxWait</span>=<span class="string">"-1"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -390,18 +371,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/02/check/" rel="next" title="check">
-                <i class="fa fa-chevron-left"></i> check
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/25/CoreJava/" rel="prev" title="CoreJava(2)">
-                CoreJava(2) <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/01/JavaEE JSP配置流程/" rel="prev" title="JavaEE JSP配置流程">
+                JavaEE JSP配置流程 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
