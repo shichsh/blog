@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件，内容如下：  1&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;">
+<meta name="description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件，  1&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaEE JSP配置流程">
 <meta property="og:url" content="http://yoursite.com/2017/05/01/JavaEE JSP配置流程/index.html">
 <meta property="og:site_name" content="shichsh">
-<meta property="og:description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件，内容如下：  1&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;">
-<meta property="og:updated_time" content="2017-05-03T02:19:35.000Z">
+<meta property="og:description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件，  1&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;">
+<meta property="og:updated_time" content="2017-05-03T02:20:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaEE JSP配置流程">
-<meta name="twitter:description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件，内容如下：  1&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;">
+<meta name="twitter:description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件，  1&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;">
 
 
 
@@ -337,7 +337,7 @@
         <p>配置环境：<br>Tomcat: apache-tomcat-7.0.34<br>Java: 8.0</p>
 <p>配置步骤：</p>
 <ol>
-<li>解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件，内容如下：</li>
+<li>解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件，</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;&lt;Context&gt;	&lt;Resource name="jdbc/myoracle" 		auth="Container"	  	type="javax.sql.DataSource" 	  	driverClassName="oracle.jdbc.driver.OracleDriver"	  	url="jdbc:oracle:thin:@**yourpcname**:1521:XE"	  	username="yourdatabaseusername" 	  	password="yourdatabasepassword" 	  	maxActive="20"	  	maxIdle="10"	  	maxWait="-1"/&gt;&lt;/Context&gt;</div></pre></td></tr></table></figure>
 <p>参数maxWait = -1 意味着当active connection 达到maxActive值后，再得到的request会等待，等待时间forever</p>
