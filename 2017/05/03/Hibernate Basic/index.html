@@ -90,17 +90,20 @@
 
 
 
-<meta name="description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0OS: Window10 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件, 内容如下：12345678910111213&amp;lt;?xml version=">
+<meta name="description" content="Caching First Level Caching: Caching on Session(Default) Second Level Caching: Caching on SessionFactory, which is a caching across different sessions and needs to be configured.  How does Hibernate f">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaEE JSP配置流程">
-<meta property="og:url" content="http://yoursite.com/2017/05/02/JavaEE JSP配置流程/index.html">
+<meta property="og:title" content="Hibernate Basic">
+<meta property="og:url" content="http://yoursite.com/2017/05/03/Hibernate Basic/index.html">
 <meta property="og:site_name" content="shichsh">
-<meta property="og:description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0OS: Window10 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件, 内容如下：12345678910111213&amp;lt;?xml version=">
-<meta property="og:updated_time" content="2017-05-03T03:12:04.000Z">
+<meta property="og:description" content="Caching First Level Caching: Caching on Session(Default) Second Level Caching: Caching on SessionFactory, which is a caching across different sessions and needs to be configured.  How does Hibernate f">
+<meta property="og:image" content="http://yoursite.com/media/14938701548333.jpg">
+<meta property="og:image" content="http://yoursite.com/media/14938702605767.jpg">
+<meta property="og:updated_time" content="2017-05-04T04:09:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaEE JSP配置流程">
-<meta name="twitter:description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0OS: Window10 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件, 内容如下：12345678910111213&amp;lt;?xml version=">
+<meta name="twitter:title" content="Hibernate Basic">
+<meta name="twitter:description" content="Caching First Level Caching: Caching on Session(Default) Second Level Caching: Caching on SessionFactory, which is a caching across different sessions and needs to be configured.  How does Hibernate f">
+<meta name="twitter:image" content="http://yoursite.com/media/14938701548333.jpg">
 
 
 
@@ -128,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/02/JavaEE JSP配置流程/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/03/Hibernate Basic/"/>
 
 
 
 
 
-  <title>JavaEE JSP配置流程 | shichsh</title>
+  <title>Hibernate Basic | shichsh</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -263,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/02/JavaEE JSP配置流程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/03/Hibernate Basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chengsheng">
@@ -284,7 +287,7 @@
             
             
               
-                JavaEE JSP配置流程
+                Hibernate Basic
               
             
           </h1>
@@ -299,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-02T00:00:00-04:00">
-                2017-05-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-03T23:43:13-04:00">
+                2017-05-03
               </time>
             
 
@@ -334,27 +337,33 @@
       
 
       
-        <p>配置环境：<br>Tomcat: apache-tomcat-7.0.34<br>Java: 8.0<br>OS: Window10</p>
-<p>配置步骤：</p>
+        <h2 id="Caching"><a href="#Caching" class="headerlink" title="Caching"></a>Caching</h2><ul>
+<li>First Level Caching: Caching on Session(Default)</li>
+<li>Second Level Caching: Caching on SessionFactory, which is a caching across different sessions and needs to be configured.</li>
+</ul>
+<p>How does Hibernate find an object? </p>
+<ul>
+<li>Check whether this object is cached in the session</li>
+<li>Check whether this object is cached in the SessionFactory</li>
+<li>Go to database to run a query to find this object.</li>
+</ul>
+<h2 id="Caching-on-Session"><a href="#Caching-on-Session" class="headerlink" title="Caching on Session"></a>Caching on Session</h2><p>Each Object has three status in a session</p>
+<p><img src="/media/14938701548333.jpg" alt=""></p>
+<h2 id="Caching-on-SessionFactory"><a href="#Caching-on-SessionFactory" class="headerlink" title="Caching on SessionFactory"></a>Caching on SessionFactory</h2><p>Comparison of different API for second-level caching<br>Configure ehcache.xml file when using EHCache</p>
+<p><img src="/media/14938702605767.jpg" alt=""></p>
+<h2 id="Caching-on-Query"><a href="#Caching-on-Query" class="headerlink" title="Caching on Query"></a>Caching on Query</h2><p>It will be applied if a query is called frequently.</p>
 <ol>
-<li>解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件, 内容如下：<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"jdbc/myoracle"</span> </span></div><div class="line">		<span class="attr">auth</span>=<span class="string">"Container"</span></div><div class="line">	  	<span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span> </div><div class="line">	  	<span class="attr">driverClassName</span>=<span class="string">"oracle.jdbc.driver.OracleDriver"</span></div><div class="line">	  	<span class="attr">url</span>=<span class="string">"jdbc:oracle:thin:@**yourpcname**:1521:XE"</span></div><div class="line">	  	<span class="attr">username</span>=<span class="string">"yourdatabaseusername"</span> </div><div class="line">	  	<span class="attr">password</span>=<span class="string">"yourdatabasepassword"</span> </div><div class="line">	  	<span class="attr">maxActive</span>=<span class="string">"20"</span></div><div class="line">	  	<span class="attr">maxIdle</span>=<span class="string">"10"</span></div><div class="line">	  	<span class="attr">maxWait</span>=<span class="string">"-1"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
+<li>Set use_query_cache to true</li>
+<li>Use query.setCacheable(true) to active the cache or query.setCacheable(false) to deactivate the cache</li>
 </ol>
-<p>参数maxWait = -1 意味着当active connection 达到maxActive值后，再得到的request会等待，等待时间forever</p>
+<h2 id="Batch-Processing"><a href="#Batch-Processing" class="headerlink" title="Batch Processing"></a>Batch Processing</h2><p>Hibernate Batch Processing is to insert or update a huge amount of data in one transaction<br>Hibernate Caching is stateful and thus might result memory overflow in the batch processing.</p>
+<blockquote>
+<p>Solution:</p>
 <ol>
-<li><p>配置keystore<br>参考<a href="https://www.mkyong.com/tomcat/how-to-configure-tomcat-to-support-ssl-or-https/" target="_blank" rel="external">mkyong文档</a>配置，完全按照步骤进行，注意keystore和key password密码保持一致。可能会有很多问题，回答完就好。<br>在进行第二步Connector in server.xml之前，把bin中的server复制一份，并重命名为server_old。在粘贴过后，记得更改keystore。</p>
-</li>
-<li><p>新建自己的JavaEE workplace，这里是“JavaEE”文件夹。打开Eclipse, 选择workplace为JavaEE（或切换workplace）。</p>
-</li>
-<li><p>build server: window -&gt; preference -&gt; server -&gt; runtime envrionment -&gt; add -&gt; Tomcat v7.0 -&gt; Tomcat installation directory(browser your Tomcat directory)</p>
-</li>
-<li><p>新建JSP demo: 右键新建dynamic web project -&gt; 输入project name -&gt; next -&gt; next -&gt; check “generate web.xml deployment descriptor”</p>
-</li>
-<li><p>新建空的css文件夹，添加standard bootstrap css files。right click webcontent -&gt; create a .jsp file called “<em>*</em>.jsp”-&gt; remove all contents before &lt;!DOCTYPE&gt; and some contenst after &lt;!DOCTYPE html</p>
-</li>
-<li>在底部的server栏中，新建new server, 选择Tomcat v7.0 Server。确定后选中Tomcat v7.0 Server at localhost右键选择Add and Remove，将jsp文件加入configured中, 然后finish</li>
-<li>点击start启动服务器，console显示无误后，打开浏览器输入 http://<span></span>localhost:8080/project name/jsp file name进行测试</li>
+<li>Programmatically </li>
+<li>Use StatelessSession</li>
 </ol>
+</blockquote>
 
       
     </div>
@@ -391,18 +400,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/03/Hibernate环境配置 (Demo)/" rel="next" title="Hibernate环境配置 (Demo)">
-                <i class="fa fa-chevron-left"></i> Hibernate环境配置 (Demo)
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/25/CoreJava/" rel="prev" title="CoreJava(2)">
-                CoreJava(2) <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/03/Hibernate环境配置 (Demo)/" rel="prev" title="Hibernate环境配置 (Demo)">
+                Hibernate环境配置 (Demo) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -450,8 +455,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -495,6 +509,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Caching"><span class="nav-number">1.</span> <span class="nav-text">Caching</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Caching-on-Session"><span class="nav-number">2.</span> <span class="nav-text">Caching on Session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Caching-on-SessionFactory"><span class="nav-number">3.</span> <span class="nav-text">Caching on SessionFactory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Caching-on-Query"><span class="nav-number">4.</span> <span class="nav-text">Caching on Query</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Batch-Processing"><span class="nav-number">5.</span> <span class="nav-text">Batch Processing</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
