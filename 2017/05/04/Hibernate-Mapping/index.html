@@ -90,17 +90,17 @@
 
 
 
-<meta name="description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0OS: Window10 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件, 内容如下：12345678910111213&amp;lt;?xml version=">
+<meta name="description" content="Mapping for Composite Primary KeyExample:Table:Person( FirstName , LastName , Age)Class: Person(firstName, lastName, age) Class must implements Serial izable interface Mapping File: *.hbm.xml Mapping">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaEE JSP配置流程">
-<meta property="og:url" content="http://yoursite.com/2017/05/02/JavaEE JSP配置流程/index.html">
+<meta property="og:title" content="Hibernate Mapping">
+<meta property="og:url" content="http://yoursite.com/2017/05/04/Hibernate-Mapping/index.html">
 <meta property="og:site_name" content="shichsh">
-<meta property="og:description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0OS: Window10 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件, 内容如下：12345678910111213&amp;lt;?xml version=">
-<meta property="og:updated_time" content="2017-05-03T03:12:04.000Z">
+<meta property="og:description" content="Mapping for Composite Primary KeyExample:Table:Person( FirstName , LastName , Age)Class: Person(firstName, lastName, age) Class must implements Serial izable interface Mapping File: *.hbm.xml Mapping">
+<meta property="og:updated_time" content="2017-05-04T21:25:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaEE JSP配置流程">
-<meta name="twitter:description" content="配置环境：Tomcat: apache-tomcat-7.0.34Java: 8.0OS: Window10 配置步骤：  解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件, 内容如下：12345678910111213&amp;lt;?xml version=">
+<meta name="twitter:title" content="Hibernate Mapping">
+<meta name="twitter:description" content="Mapping for Composite Primary KeyExample:Table:Person( FirstName , LastName , Age)Class: Person(firstName, lastName, age) Class must implements Serial izable interface Mapping File: *.hbm.xml Mapping">
 
 
 
@@ -128,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/02/JavaEE JSP配置流程/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/04/Hibernate-Mapping/"/>
 
 
 
 
 
-  <title>JavaEE JSP配置流程 | shichsh</title>
+  <title>Hibernate Mapping | shichsh</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -263,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/02/JavaEE JSP配置流程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/04/Hibernate-Mapping/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chengsheng">
@@ -284,7 +284,7 @@
             
             
               
-                JavaEE JSP配置流程
+                Hibernate Mapping
               
             
           </h1>
@@ -299,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-02T00:00:00-04:00">
-                2017-05-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-04T15:52:19-04:00">
+                2017-05-04
               </time>
             
 
@@ -334,26 +334,47 @@
       
 
       
-        <p>配置环境：<br>Tomcat: apache-tomcat-7.0.34<br>Java: 8.0<br>OS: Window10</p>
-<p>配置步骤：</p>
-<ol>
-<li>解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件, 内容如下：<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"jdbc/myoracle"</span> </span></div><div class="line">		<span class="attr">auth</span>=<span class="string">"Container"</span></div><div class="line">	  	<span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span> </div><div class="line">	  	<span class="attr">driverClassName</span>=<span class="string">"oracle.jdbc.driver.OracleDriver"</span></div><div class="line">	  	<span class="attr">url</span>=<span class="string">"jdbc:oracle:thin:@**yourpcname**:1521:XE"</span></div><div class="line">	  	<span class="attr">username</span>=<span class="string">"yourdatabaseusername"</span> </div><div class="line">	  	<span class="attr">password</span>=<span class="string">"yourdatabasepassword"</span> </div><div class="line">	  	<span class="attr">maxActive</span>=<span class="string">"20"</span></div><div class="line">	  	<span class="attr">maxIdle</span>=<span class="string">"10"</span></div><div class="line">	  	<span class="attr">maxWait</span>=<span class="string">"-1"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>参数maxWait = -1 意味着当active connection 达到maxActive值后，再得到的request会等待，等待时间forever</p>
-<ol>
-<li><p>配置keystore<br>参考<a href="https://www.mkyong.com/tomcat/how-to-configure-tomcat-to-support-ssl-or-https/" target="_blank" rel="external">mkyong文档</a>配置，完全按照步骤进行，注意keystore和key password密码保持一致。可能会有很多问题，回答完就好。<br>在进行第二步Connector in server.xml之前，把bin中的server复制一份，并重命名为server_old。在粘贴过后，记得更改keystore。</p>
-</li>
-<li><p>新建自己的JavaEE workplace，这里是“JavaEE”文件夹。打开Eclipse, 选择workplace为JavaEE（或切换workplace）。</p>
-</li>
-<li><p>build server: window -&gt; preference -&gt; server -&gt; runtime envrionment -&gt; add -&gt; Tomcat v7.0 -&gt; Tomcat installation directory(browser your Tomcat directory)</p>
-</li>
-<li><p>新建JSP demo: 右键新建dynamic web project -&gt; 输入project name -&gt; next -&gt; next -&gt; check “generate web.xml deployment descriptor”</p>
-</li>
-<li><p>新建空的css文件夹，添加standard bootstrap css files。right click webcontent -&gt; create a .jsp file called “<em>*</em>.jsp”-&gt; remove all contents before &lt;!DOCTYPE&gt; and some contenst after &lt;!DOCTYPE html</p>
-</li>
-<li>在底部的server栏中，新建new server, 选择Tomcat v7.0 Server。确定后选中Tomcat v7.0 Server at localhost右键选择Add and Remove，将jsp文件加入configured中, 然后finish</li>
-<li>点击start启动服务器，console显示无误后，打开浏览器输入 http://<span></span>localhost:8080/project name/jsp file name进行测试</li>
+        <h2 id="Mapping-for-Composite-Primary-Key"><a href="#Mapping-for-Composite-Primary-Key" class="headerlink" title="Mapping for Composite Primary Key"></a>Mapping for Composite Primary Key</h2><p>Example:<br>Table:Person( <em>FirstName</em> , <em>LastName</em> , Age)<br>Class: Person(firstName, lastName, age)</p>
+<p>Class must implements Serial izable interface</p>
+<p>Mapping File: <em>*</em>.hbm.xml</p>
+<h2 id="Mapping-for-Class-Hierachy"><a href="#Mapping-for-Class-Hierachy" class="headerlink" title="Mapping for Class Hierachy"></a>Mapping for Class Hierachy</h2><p>Example:<br>Parent Class: User(id, name)<br>Subclass: LocalUser(location), RemoteUser(country)</p>
+<p>Three ways to map:</p>
+<h3 id="Table-per-Class-Hierachy"><a href="#Table-per-Class-Hierachy" class="headerlink" title="Table per Class Hierachy"></a>Table per Class Hierachy</h3><p>Table:<br>All User( <em>ID</em> , Name, Type, Location, Country)<br>Use &lt;<span></span>Discriminator column=”Type”/&gt;in the mapping file<br>Use &lt;<span></span>subclass discriminator-value=”L”/&gt; to identify LocalUser<br>Use &lt;<span></span>subclass discriminator-value=”R”/&gt; to identify RemoteUser</p>
+<ul>
+<li>Pros: Good performance</li>
+<li>Cons: Null in Location or Country and results data redundancy</li>
+</ul>
+<h3 id="Table-per-Subclass"><a href="#Table-per-Subclass" class="headerlink" title="Table per Subclass"></a>Table per Subclass</h3><p>Table:<br>Parent_User( <em>ID</em> , Name)<br>LocalUser( <em>ID</em> , Location)<br>RemoteUser( <em>ID</em> , Country)</p>
+<ul>
+<li>Use joined-subclass tag in the mapping file</li>
+<li>Pros: No data redundancy</li>
+<li>Cons: Bad performance when using “join”</li>
+</ul>
+<h3 id="Table-per-Concrete-Class"><a href="#Table-per-Concrete-Class" class="headerlink" title="Table per Concrete Class"></a>Table per Concrete Class</h3><p>Table:<br>Concrete_LocalUser( <em>ID</em> , Name, Location)<br>Concrete_RemoteUser(<em>ID</em> , Name, Country)</p>
+<ul>
+<li>Use union-subclass tag in the mapping file</li>
+<li>Tradeoff between performance and data redundancy.</li>
+</ul>
+<h2 id="Mapping-with-Collection"><a href="#Mapping-with-Collection" class="headerlink" title="Mapping with Collection"></a>Mapping with Collection</h2><p>Table:<br>Customer( <em>ID</em> , Name)<br>Email(ID, Address), ID as foreign key</p>
+<p>Class:<br>Customer(id, name, emails)</p>
+<ul>
+<li>Lazy Fetching and LazyInitializationException</li>
+</ul>
+<h2 id="Many-To-One-Mapping"><a href="#Many-To-One-Mapping" class="headerlink" title="Many-To-One Mapping"></a>Many-To-One Mapping</h2><p>Table:<br>Game( <em>GID</em> , Gname)<br>Player( <em>PID</em> , Pname, GID as foreign key)</p>
+<p>Class:<br>Game(gid, gname)<br>Player(pid, pname, game)</p>
+<p>Cascade: cascade value can be: all, save-update, delete, delete-orphan, all-delete-orphan</p>
+<h2 id="One-To-Many-Mapping"><a href="#One-To-Many-Mapping" class="headerlink" title="One-To-Many Mapping"></a>One-To-Many Mapping</h2><p>Tbale:<br>House( <em>HID</em> , Address)<br>Visitor( <em>VID</em>, Vname, HID as foreign key)</p>
+<p>Class:<br>House(hid, address, visitors)<br>Visitor(vid, vname, hid)</p>
+<p>Inverse: A boolean parameter. True means “many” controls “one”</p>
+<h2 id="One-To-One-Mapping"><a href="#One-To-One-Mapping" class="headerlink" title="One-To-One Mapping"></a>One-To-One Mapping</h2><p>Table:<br>Trader( <em>TID</em> , Name)<br>Login( <em>TID</em> , Username, Password, TID as foreign key)</p>
+<p>Class:<br>Trader(tid, name, login)<br>Login(tid, username, password, trader)</p>
+<h2 id="Many-To-Many-Mapping"><a href="#Many-To-Many-Mapping" class="headerlink" title="Many-To-Many Mapping"></a>Many-To-Many Mapping</h2><p>Table:<br>Student( <em>ID</em> , Name)<br>Course( <em>CID</em> , Course_name)<br>Enroll( <em>ID</em> , <em>CID</em> , ID and CID as foreign key)<br>Class:<br>Student(id, name, courses)<br>Course(cid, course_name, students)</p>
+<h2 id="Transaction"><a href="#Transaction" class="headerlink" title="Transaction"></a>Transaction</h2><p>A: Atomicity<br>C: Consistency<br>I: Isolation<br>D: Durability</p>
+<h2 id="Isolation-Levels"><a href="#Isolation-Levels" class="headerlink" title="Isolation Levels"></a>Isolation Levels</h2><ol>
+<li>Read uncommitted</li>
+<li>Read committed (default)</li>
+<li>Repeatable Read</li>
+<li>serializable</li>
 </ol>
 
       
@@ -391,18 +412,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/03/Hibernate环境配置 (Demo)/" rel="next" title="Hibernate环境配置 (Demo)">
-                <i class="fa fa-chevron-left"></i> Hibernate环境配置 (Demo)
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/25/CoreJava/" rel="prev" title="CoreJava(2)">
-                CoreJava(2) <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/03/Hibernate Basic/" rel="prev" title="Hibernate Basic">
+                Hibernate Basic <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -450,8 +467,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -495,6 +521,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mapping-for-Composite-Primary-Key"><span class="nav-number">1.</span> <span class="nav-text">Mapping for Composite Primary Key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mapping-for-Class-Hierachy"><span class="nav-number">2.</span> <span class="nav-text">Mapping for Class Hierachy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Table-per-Class-Hierachy"><span class="nav-number">2.1.</span> <span class="nav-text">Table per Class Hierachy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Table-per-Subclass"><span class="nav-number">2.2.</span> <span class="nav-text">Table per Subclass</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Table-per-Concrete-Class"><span class="nav-number">2.3.</span> <span class="nav-text">Table per Concrete Class</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mapping-with-Collection"><span class="nav-number">3.</span> <span class="nav-text">Mapping with Collection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Many-To-One-Mapping"><span class="nav-number">4.</span> <span class="nav-text">Many-To-One Mapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#One-To-Many-Mapping"><span class="nav-number">5.</span> <span class="nav-text">One-To-Many Mapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#One-To-One-Mapping"><span class="nav-number">6.</span> <span class="nav-text">One-To-One Mapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Many-To-Many-Mapping"><span class="nav-number">7.</span> <span class="nav-text">Many-To-Many Mapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transaction"><span class="nav-number">8.</span> <span class="nav-text">Transaction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Isolation-Levels"><span class="nav-number">9.</span> <span class="nav-text">Isolation Levels</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
