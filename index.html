@@ -464,8 +464,7 @@
 
       
         
-          
-            <h2 id="Caching"><a href="#Caching" class="headerlink" title="Caching"></a>Caching</h2><ul>
+          <h2 id="Caching"><a href="#Caching" class="headerlink" title="Caching"></a>Caching</h2><ul>
 <li>First Level Caching: Caching on Session(Default)</li>
 <li>Second Level Caching: Caching on SessionFactory, which is a caching across different sessions and needs to be configured.</li>
 </ul>
@@ -475,25 +474,13 @@
 <li>Check whether this object is cached in the SessionFactory</li>
 <li>Go to database to run a query to find this object.</li>
 </ul>
-<h2 id="Caching-on-Session"><a href="#Caching-on-Session" class="headerlink" title="Caching on Session"></a>Caching on Session</h2><p>Each Object has three status in a session</p>
-<p><img src="/media/14938701548333.jpg" alt=""></p>
-<h2 id="Caching-on-SessionFactory"><a href="#Caching-on-SessionFactory" class="headerlink" title="Caching on SessionFactory"></a>Caching on SessionFactory</h2><p>Comparison of different API for second-level caching<br>Configure ehcache.xml file when using EHCache</p>
-<p><img src="/media/14938702605767.jpg" alt=""></p>
-<h2 id="Caching-on-Query"><a href="#Caching-on-Query" class="headerlink" title="Caching on Query"></a>Caching on Query</h2><p>It will be applied if a query is called frequently.</p>
-<ol>
-<li>Set use_query_cache to true</li>
-<li>Use query.setCacheable(true) to active the cache or query.setCacheable(false) to deactivate the cache</li>
-</ol>
-<h2 id="Batch-Processing"><a href="#Batch-Processing" class="headerlink" title="Batch Processing"></a>Batch Processing</h2><p>Hibernate Batch Processing is to insert or update a huge amount of data in one transaction<br>Hibernate Caching is stateful and thus might result memory overflow in the batch processing.</p>
-<blockquote>
-<p>Solution:</p>
-<ol>
-<li>Programmatically </li>
-<li>Use StatelessSession</li>
-</ol>
-</blockquote>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/03/Hibernate Basic/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -610,33 +597,14 @@
 
       
         
-          
-            <p>Hibernate配置环境：<br>Java SE8<br>Eclipse Mars<br>Hibernate 3.2<br>Oracle 10g Express</p>
-<ol>
-<li><p>create a maven project, in pom.xml file, add hibernate dependencies. The maven project will automatically create jar files.</p>
-</li>
-<li><p>Create table Samle(name, age) in Oracle database</p>
-</li>
-<li><p>Create Java Bean class User</p>
-</li>
-<li><p>create a package in src folder. In this package, we create a file called “User.hbm.xml”, write the following code:</p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC </span></div><div class="line">   "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</div><div class="line">   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"&gt; </div><div class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span>&gt;</span>     </div><div class="line">   <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"com.mercury.beans.User"</span> <span class="attr">table</span>=<span class="string">"Sample"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">column</span>=<span class="string">"Name"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span> </div><div class="line">       <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">column</span>=<span class="string">"Age"</span>/&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">class</span>&gt;</span> </div><div class="line">  <span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>Import hibernate 3.2 jar files in <code>WebContent/Web-INF/lib</code></p>
-</li>
-<li><p>create a hibernate.cfg.xml file, write following code:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE hibernate-configuration PUBLIC</span></div><div class="line">    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"</div><div class="line">    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd"&gt;</div><div class="line"><span class="tag">&lt;<span class="name">hibernate-configuration</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">session-factory</span>&gt;</span></div><div class="line">	    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"show_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span> </div><div class="line">	    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"format_sql"</span>&gt;</span>false<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dialect"</span>&gt;</span>org.hibernate.dialect.OracleDialect<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.datasource"</span>&gt;</span>java:/comp/env/jdbc/myoracle<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">mapping</span> <span class="attr">resource</span>=<span class="string">"com/*****/mappings/User.hbm.xml"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">session-factory</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">hibernate-configuration</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>com/<strong>*</strong>/mappings is your package name</p>
-</li>
-<li><p>In util package, create a hibernateUtil class,</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HibernateUtil</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> SessionFactory FACTORY;</div><div class="line">	<span class="keyword">static</span> &#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			FACTORY = <span class="keyword">new</span> Configuration().configure().buildSessionFactory();</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e.getMessage(), e);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal&lt;Session&gt; SESSION = <span class="keyword">new</span> ThreadLocal&lt;Session&gt;() &#123;</div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">protected</span> Session <span class="title">initialValue</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="keyword">return</span> FACTORY.openSession();</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SessionFactory <span class="title">getSessionFactory</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> FACTORY;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Session <span class="title">currentSession</span><span class="params">()</span> <span class="keyword">throws</span> HibernateException </span>&#123;</div><div class="line">		Session s = SESSION.get();</div><div class="line">		<span class="keyword">if</span> (s == <span class="keyword">null</span>) &#123;</div><div class="line">			s = FACTORY.openSession();</div><div class="line">			SESSION.set(s);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> s;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeSession</span><span class="params">()</span> <span class="keyword">throws</span> HibernateException </span>&#123;</div><div class="line">		Session s = SESSION.get();</div><div class="line">		SESSION.set(<span class="keyword">null</span>);</div><div class="line">		<span class="keyword">if</span> (s!=<span class="keyword">null</span>) s.close();</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>In dao.Impl package, create a daoimpl class which implements dao interface.</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloDaoImpl2</span> <span class="keyword">implements</span> <span class="title">HelloDao</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(User user)</span> </span>&#123;</div><div class="line">		Session session = HibernateUtil.currentSession();</div><div class="line">		Transaction tx = session.beginTransaction();</div><div class="line">		session.save(user);</div><div class="line">		tx.commit();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(User user)</span> </span>&#123;</div><div class="line">		Session session = HibernateUtil.currentSession();</div><div class="line">		Transaction tx = session.beginTransaction();</div><div class="line">		session.update(user);</div><div class="line">		tx.commit();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(User user)</span> </span>&#123;</div><div class="line">		Session session = HibernateUtil.currentSession();</div><div class="line">		Transaction tx = session.beginTransaction();</div><div class="line">		session.delete(user);</div><div class="line">		tx.commit();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">queryAll</span><span class="params">()</span> </span>&#123;</div><div class="line">		Session session = HibernateUtil.currentSession();</div><div class="line">		String hql = <span class="string">"from User"</span>;</div><div class="line">		Query query = session.createQuery(hql);</div><div class="line">		List&lt;User&gt; list = query.list();</div><div class="line">		<span class="keyword">return</span> list;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> User <span class="title">findByName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		Session session = HibernateUtil.currentSession();</div><div class="line">		User user = (User)session.load(User.class, name);</div><div class="line">		<span class="keyword">return</span> user;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-
-          
+          <p>Hibernate配置环境：<br>Java SE8<br>Eclipse Mars<br>Hibernate 3.2<br>Oracle 10g Express</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/03/Hibernate环境配置 (Demo)/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -753,30 +721,15 @@
 
       
         
-          
-            <p>配置环境：<br>Tomcat: apache-tomcat-7.0.34<br>Java: 8.0<br>OS: Window10</p>
-<p>配置步骤：</p>
-<ol>
-<li>解压缩apache-tomcat-7.0.34，进入bin文件夹。在bin文件夹当中找到context xml文件，重命名为context_old. 在bin目录下新建context xml文件, 内容如下：<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">Context</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"jdbc/myoracle"</span> </span></div><div class="line">		<span class="attr">auth</span>=<span class="string">"Container"</span></div><div class="line">	  	<span class="attr">type</span>=<span class="string">"javax.sql.DataSource"</span> </div><div class="line">	  	<span class="attr">driverClassName</span>=<span class="string">"oracle.jdbc.driver.OracleDriver"</span></div><div class="line">	  	<span class="attr">url</span>=<span class="string">"jdbc:oracle:thin:@**yourpcname**:1521:XE"</span></div><div class="line">	  	<span class="attr">username</span>=<span class="string">"yourdatabaseusername"</span> </div><div class="line">	  	<span class="attr">password</span>=<span class="string">"yourdatabasepassword"</span> </div><div class="line">	  	<span class="attr">maxActive</span>=<span class="string">"20"</span></div><div class="line">	  	<span class="attr">maxIdle</span>=<span class="string">"10"</span></div><div class="line">	  	<span class="attr">maxWait</span>=<span class="string">"-1"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Context</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>参数maxWait = -1 意味着当active connection 达到maxActive值后，再得到的request会等待，等待时间forever</p>
-<ol>
-<li><p>配置keystore<br>参考<a href="https://www.mkyong.com/tomcat/how-to-configure-tomcat-to-support-ssl-or-https/" target="_blank" rel="external">mkyong文档</a>配置，完全按照步骤进行，注意keystore和key password密码保持一致。可能会有很多问题，回答完就好。<br>在进行第二步Connector in server.xml之前，把bin中的server复制一份，并重命名为server_old。在粘贴过后，记得更改keystore。</p>
-</li>
-<li><p>新建自己的JavaEE workplace，这里是“JavaEE”文件夹。打开Eclipse, 选择workplace为JavaEE（或切换workplace）。</p>
-</li>
-<li><p>build server: window -&gt; preference -&gt; server -&gt; runtime envrionment -&gt; add -&gt; Tomcat v7.0 -&gt; Tomcat installation directory(browser your Tomcat directory)</p>
-</li>
-<li><p>新建JSP demo: 右键新建dynamic web project -&gt; 输入project name -&gt; next -&gt; next -&gt; check “generate web.xml deployment descriptor”</p>
-</li>
-<li><p>新建空的css文件夹，添加standard bootstrap css files。right click webcontent -&gt; create a .jsp file called “<em>*</em>.jsp”-&gt; remove all contents before &lt;!DOCTYPE&gt; and some contenst after &lt;!DOCTYPE html</p>
-</li>
-<li>在底部的server栏中，新建new server, 选择Tomcat v7.0 Server。确定后选中Tomcat v7.0 Server at localhost右键选择Add and Remove，将jsp文件加入configured中, 然后finish</li>
-<li>点击start启动服务器，console显示无误后，打开浏览器输入 http://<span></span>localhost:8080/project name/jsp file name进行测试</li>
-</ol>
-
-          
+          <p>配置环境：<br>Tomcat: apache-tomcat-7.0.34<br>Java: 8.0<br>OS: Window10</p>
+<p>配置步骤：<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/02/JavaEE JSP配置流程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -893,47 +846,16 @@
 
       
         
-          
-            <h2 id="Clone-in-Java"><a href="#Clone-in-Java" class="headerlink" title="Clone in Java"></a>Clone in Java</h2><ul>
-<li>clone() 方法<br>clone() is one of the method of class Object.<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> String name;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Employee</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Employee <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</div><div class="line">		<span class="comment">// return new Employee(name);</span></div><div class="line">		<span class="keyword">return</span> (Employee)<span class="keyword">super</span>.clone();  <span class="comment">// shallow copy</span></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+          <h2 id="Clone-in-Java"><a href="#Clone-in-Java" class="headerlink" title="Clone in Java"></a>Clone in Java</h2><ul>
+<li>clone() 方法<br>clone() is one of the method of class Object.</li>
 </ul>
-<p>If we want to make a copy of an object, we need to implement the Cloneable interface and override clone method.<br>Clonable: marker interface<br>Clone() is a shallow copy</p>
-<h2 id="Shallow-Copy-and-Deep-Copy"><a href="#Shallow-Copy-and-Deep-Copy" class="headerlink" title="Shallow Copy and Deep Copy"></a>Shallow Copy and Deep Copy</h2><p>Relation chain: Prototype - clone - shallow copy</p>
-<p>It is not recommended to use clone. pass object by reference. clone too much object make garbage collection a lot </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">  <span class="keyword">char</span>[] a;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">A</span><span class="params">(<span class="keyword">char</span>[] a)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.a = a.clone()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Diamond Paradigm</p>
-<ul>
-<li>no abstract before enum</li>
-<li>no abstract and final together</li>
-</ul>
-<p>Class Loader</p>
-<ul>
-<li>Extensive</li>
-<li>Bootstrap</li>
-<li>system</li>
-</ul>
-<h2 id="Final-keyword"><a href="#Final-keyword" class="headerlink" title="Final keyword"></a>Final keyword</h2><p>final, finally, finalize</p>
-<p>finally: try check</p>
-<p>finalize() -&gt; gc</p>
-<h2 id="Reflection"><a href="#Reflection" class="headerlink" title="Reflection"></a>Reflection</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">exec</span>(<span class="params">obj, method</span>) </span>&#123;</div><div class="line">  obj[method]();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>SecurityManager -&gt; control reflection</p>
-<h2 id="Garbage-Collection"><a href="#Garbage-Collection" class="headerlink" title="Garbage Collection"></a>Garbage Collection</h2><p>gc can be invoked(not run), but not to be forced</p>
-<p>cant never be garbage collected<br>static final field in a class </p>
-<p>minimize the usage of garbage collection<br>Object Pooling-&gt; Factory</p>
-<p>make memory overflow, how to deal with<br>jcvz -Xms512M, -Xmx 4096M Hello (eclipse.ini)</p>
-<h2 id="Inner-Class"><a href="#Inner-Class" class="headerlink" title="Inner Class"></a>Inner Class</h2><p>local inner class:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">  <span class="class"><span class="keyword">class</span> <span class="title">B</span> </span>&#123;&#125;</div><div class="line">&#125;</div><div class="line">A a = <span class="keyword">new</span> A();</div><div class="line">A.B b = a.new B();</div></pre></td></tr></table></figure>
-<p>Anonymous Inner class:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123; </div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;&#125;</div><div class="line">  &#125;</div><div class="line">  Interface a = <span class="keyword">new</span> I() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">I</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Object a = <span class="keyword">new</span> Object();</div><div class="line">Object b = <span class="keyword">new</span> Object() &#123;&#125;;</div></pre></td></tr></table></figure>
-<p>An interface can contain an static inner class</p>
-<h2 id="hashcode-和-equals"><a href="#hashcode-和-equals" class="headerlink" title="hashcode() 和 equals()"></a>hashcode() 和 equals()</h2><ul>
-<li>定义</li>
-</ul>
-<p>hashCode() : returns a hash code value of object<br>equals():<br>hash value of address<br>(fn + “ “ + ln).hashcode()</p>
-<p>instanceof vs getClass()</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/25/CoreJava/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
