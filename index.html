@@ -338,51 +338,16 @@
 
       
         
-          
-            <h2 id="Mapping-for-Composite-Primary-Key"><a href="#Mapping-for-Composite-Primary-Key" class="headerlink" title="Mapping for Composite Primary Key"></a>Mapping for Composite Primary Key</h2><p>Example:<br>Table:Person( <em>FirstName</em> , <em>LastName</em> , Age)<br>Class: Person(firstName, lastName, age)</p>
+          <h2 id="Mapping-for-Composite-Primary-Key"><a href="#Mapping-for-Composite-Primary-Key" class="headerlink" title="Mapping for Composite Primary Key"></a>Mapping for Composite Primary Key</h2><p>Example:<br>Table:Person( <em>FirstName</em> , <em>LastName</em> , Age)<br>Class: Person(firstName, lastName, age)</p>
 <p>Class must implements Serial izable interface</p>
-<p>Mapping File: <em>*</em>.hbm.xml</p>
-<h2 id="Mapping-for-Class-Hierachy"><a href="#Mapping-for-Class-Hierachy" class="headerlink" title="Mapping for Class Hierachy"></a>Mapping for Class Hierachy</h2><p>Example:<br>Parent Class: User(id, name)<br>Subclass: LocalUser(location), RemoteUser(country)</p>
-<p>Three ways to map:</p>
-<h3 id="Table-per-Class-Hierachy"><a href="#Table-per-Class-Hierachy" class="headerlink" title="Table per Class Hierachy"></a>Table per Class Hierachy</h3><p>Table:<br>All User( <em>ID</em> , Name, Type, Location, Country)<br>Use &lt;<span></span>Discriminator column=”Type”/&gt;in the mapping file<br>Use &lt;<span></span>subclass discriminator-value=”L”/&gt; to identify LocalUser<br>Use &lt;<span></span>subclass discriminator-value=”R”/&gt; to identify RemoteUser</p>
-<ul>
-<li>Pros: Good performance</li>
-<li>Cons: Null in Location or Country and results data redundancy</li>
-</ul>
-<h3 id="Table-per-Subclass"><a href="#Table-per-Subclass" class="headerlink" title="Table per Subclass"></a>Table per Subclass</h3><p>Table:<br>Parent_User( <em>ID</em> , Name)<br>LocalUser( <em>ID</em> , Location)<br>RemoteUser( <em>ID</em> , Country)</p>
-<ul>
-<li>Use joined-subclass tag in the mapping file</li>
-<li>Pros: No data redundancy</li>
-<li>Cons: Bad performance when using “join”</li>
-</ul>
-<h3 id="Table-per-Concrete-Class"><a href="#Table-per-Concrete-Class" class="headerlink" title="Table per Concrete Class"></a>Table per Concrete Class</h3><p>Table:<br>Concrete_LocalUser( <em>ID</em> , Name, Location)<br>Concrete_RemoteUser(<em>ID</em> , Name, Country)</p>
-<ul>
-<li>Use union-subclass tag in the mapping file</li>
-<li>Tradeoff between performance and data redundancy.</li>
-</ul>
-<h2 id="Mapping-with-Collection"><a href="#Mapping-with-Collection" class="headerlink" title="Mapping with Collection"></a>Mapping with Collection</h2><p>Table:<br>Customer( <em>ID</em> , Name)<br>Email(ID, Address), ID as foreign key</p>
-<p>Class:<br>Customer(id, name, emails)</p>
-<ul>
-<li>Lazy Fetching and LazyInitializationException</li>
-</ul>
-<h2 id="Many-To-One-Mapping"><a href="#Many-To-One-Mapping" class="headerlink" title="Many-To-One Mapping"></a>Many-To-One Mapping</h2><p>Table:<br>Game( <em>GID</em> , Gname)<br>Player( <em>PID</em> , Pname, GID as foreign key)</p>
-<p>Class:<br>Game(gid, gname)<br>Player(pid, pname, game)</p>
-<p>Cascade: cascade value can be: all, save-update, delete, delete-orphan, all-delete-orphan</p>
-<h2 id="One-To-Many-Mapping"><a href="#One-To-Many-Mapping" class="headerlink" title="One-To-Many Mapping"></a>One-To-Many Mapping</h2><p>Tbale:<br>House( <em>HID</em> , Address)<br>Visitor( <em>VID</em>, Vname, HID as foreign key)</p>
-<p>Class:<br>House(hid, address, visitors)<br>Visitor(vid, vname, hid)</p>
-<p>Inverse: A boolean parameter. True means “many” controls “one”</p>
-<h2 id="One-To-One-Mapping"><a href="#One-To-One-Mapping" class="headerlink" title="One-To-One Mapping"></a>One-To-One Mapping</h2><p>Table:<br>Trader( <em>TID</em> , Name)<br>Login( <em>TID</em> , Username, Password, TID as foreign key)</p>
-<p>Class:<br>Trader(tid, name, login)<br>Login(tid, username, password, trader)</p>
-<h2 id="Many-To-Many-Mapping"><a href="#Many-To-Many-Mapping" class="headerlink" title="Many-To-Many Mapping"></a>Many-To-Many Mapping</h2><p>Table:<br>Student( <em>ID</em> , Name)<br>Course( <em>CID</em> , Course_name)<br>Enroll( <em>ID</em> , <em>CID</em> , ID and CID as foreign key)<br>Class:<br>Student(id, name, courses)<br>Course(cid, course_name, students)</p>
-<h2 id="Transaction"><a href="#Transaction" class="headerlink" title="Transaction"></a>Transaction</h2><p>A: Atomicity<br>C: Consistency<br>I: Isolation<br>D: Durability</p>
-<h2 id="Isolation-Levels"><a href="#Isolation-Levels" class="headerlink" title="Isolation Levels"></a>Isolation Levels</h2><ol>
-<li>Read uncommitted</li>
-<li>Read committed (default)</li>
-<li>Repeatable Read</li>
-<li>serializable</li>
-</ol>
-
-          
+<p>Mapping File: <em>*</em>.hbm.xml4</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/04/Hibernate-Mapping/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
