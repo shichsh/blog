@@ -466,86 +466,14 @@
 
       
         
-          
-            <h2 id="Dao-Support"><a href="#Dao-Support" class="headerlink" title="Dao Support"></a>Dao Support</h2><p>Spring provides abstract class DaoSupport to make an abstraction. It has subclasses such as JdbcDaoSupport to integrate with JDBC, HibernateDaoSupport to integrate with Hibernate, JpaDaoSupport to integrate with JPA.</p>
-<p>Instead of Daosupport, Spring Dao class can also be defined as POJO that contains different template object. For JDBC, it contains SimpleJdbcTemplate; For Hibernate, it contains HibernateTemplate; For JPA, it contains EntityManager.</p>
-<ul>
-<li>assume “user” is target data object</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Item</th>
-<th style="text-align:center">JdbcDaoSupport</th>
-<th style="text-align:center">HibernateDaoSupport</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">template</td>
-<td style="text-align:center">SimpleJdbcTemplate/ NamedParameterJdbcTemplate</td>
-<td style="text-align:center">HibernateTemplate</td>
-</tr>
-<tr>
-<td style="text-align:center">Access Template</td>
-<td style="text-align:center">getJdbcTemplate()</td>
-<td style="text-align:center">getHibernateTemplate()</td>
-</tr>
-<tr>
-<td style="text-align:center">C(create)</td>
-<td style="text-align:center">JC**</td>
-<td style="text-align:center">save(user)</td>
-</tr>
-<tr>
-<td style="text-align:center">R(read)</td>
-<td style="text-align:center">JR*</td>
-<td style="text-align:center">find(“from User”)-&gt;table name</td>
-</tr>
-<tr>
-<td style="text-align:center">U(update)</td>
-<td style="text-align:center">JU*</td>
-<td style="text-align:center">update(user)</td>
-</tr>
-<tr>
-<td style="text-align:center">D(delete)</td>
-<td style="text-align:center">JD*</td>
-<td style="text-align:center">delete(user)</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>JC:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Object[] params = &#123;user.getName(), user.getAge()&#125;;</div><div class="line">String sql = <span class="string">"insert into Sample values(?,?)"</span>;</div><div class="line"><span class="keyword">this</span>.getJdbcTemplate().update(sql, params);</div></pre></td></tr></table></figure>
-<ul>
-<li>JR:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">String sql = <span class="string">"select * from Sample"</span>;</div><div class="line"><span class="keyword">return</span> <span class="keyword">this</span>.getJdbcTemplate().query(sql, <span class="keyword">new</span> RowMapper&lt;User&gt;() &#123;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> User <span class="title">mapRow</span><span class="params">(ResultSet rs, <span class="keyword">int</span> line)</span> <span class="keyword">throws</span> SQLException </span>&#123;</div><div class="line">		User user = <span class="keyword">new</span> User();</div><div class="line">		user.setName(rs.getString(<span class="string">"Name"</span>));</div><div class="line">		user.setAge(rs.getInt(<span class="string">"Age"</span>));</div><div class="line">		<span class="keyword">return</span> user;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<ul>
-<li>JU:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Object[] params = &#123;user.getAge(), user.getName()&#125;;</div><div class="line">String sql = <span class="string">"update Sample set Age=? where Name=?"</span>;</div><div class="line"><span class="keyword">this</span>.getJdbcTemplate().update(sql, params);</div></pre></td></tr></table></figure>
-<ul>
-<li>JD:</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Object[] params = &#123;user.getName(), user.getAge()&#125;;</div><div class="line">String sql = <span class="string">"delete Sample where Name=? and Age=?"</span>;</div><div class="line"><span class="keyword">this</span>.getJdbcTemplate().update(sql, params);</div></pre></td></tr></table></figure>
-<h2 id="HibernateDaoSupport"><a href="#HibernateDaoSupport" class="headerlink" title="HibernateDaoSupport"></a>HibernateDaoSupport</h2><p>Config.xml:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"hdb01"</span> <span class="attr">class</span>=<span class="string">"com.mercury.dao.impl.HelloDaoBean01"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sessionFactory"</span> <span class="attr">ref</span>=<span class="string">"sessionFactory"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sessionFactory"</span> <span class="attr">class</span>=<span class="string">"org.springframework.orm.hibernate3.LocalSessionFactoryBean"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mappingResources"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">list</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>com/mercury/mappings/User.hbm.xml<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">list</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernateProperties"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">props</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.dialect"</span>&gt;</span>org.hibernate.dialect.OracleDialect<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.show_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">props</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- Define DataSource --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>oracle.jdbc.driver.OracleDriver<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>jdbc:oracle:thin:@yourPCname:1521:XE<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"yourusername"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"yourpassword"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>User.hbm.xml(map bean object and oracle table):</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE hibernate-mapping PUBLIC </span></div><div class="line">    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"</div><div class="line">    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"&gt; </div><div class="line"><span class="tag">&lt;<span class="name">hibernate-mapping</span>&gt;</span>     </div><div class="line">    <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"com.mercury.beans.User"</span> <span class="attr">table</span>=<span class="string">"Sample"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">column</span>=<span class="string">"Name"</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span> </div><div class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">column</span>=<span class="string">"Age"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">class</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="JdbcDaoSupport"><a href="#JdbcDaoSupport" class="headerlink" title="JdbcDaoSupport"></a>JdbcDaoSupport</h2><p>config.xml:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- Define DataSource --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>oracle.jdbc.driver.OracleDriver<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>jdbc:oracle:thin:@yourPCname:1521:XE<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"yourusername"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"yourpassword"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">	</div><div class="line"><span class="comment">&lt;!-- Define Daos --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"hdb01"</span> <span class="attr">class</span>=<span class="string">"com.mercury.dao.impl.HelloDaoBean01"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"hdb02"</span> <span class="attr">class</span>=<span class="string">"com.mercury.dao.impl.HelloDaoBean02"</span>/&gt;</span></div></pre></td></tr></table></figure></p>
-<h2 id="Spring-Cache"><a href="#Spring-Cache" class="headerlink" title="Spring Cache"></a>Spring Cache</h2><blockquote>
-<p>Spring Cache is to cache the result of functions</p>
-</blockquote>
-<p>cacheconfig.xml:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">cache:annotation-driven</span>/&gt;</span> <span class="comment">&lt;!--don't forget--&gt;</span></div><div class="line"><span class="comment">&lt;!-- Define Daos --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"hdb04"</span> <span class="attr">class</span>=<span class="string">"com.mercury.dao.impl.HelloDaoBean04"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">	</div><div class="line"><span class="comment">&lt;!-- Define DataSource --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>oracle.jdbc.driver.OracleDriver<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>jdbc:oracle:thin:@yourPCname:1521:XE<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"yourusername"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"yourpassword"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div><div class="line">	</div><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"cacheManager"</span> <span class="attr">class</span>=<span class="string">"org.springframework.cache.support.SimpleCacheManager"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"caches"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">set</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"</span> <span class="attr">p:name</span>=<span class="string">"default"</span>/&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"</span> <span class="attr">p:name</span>=<span class="string">"users"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">set</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>In cache manager, p:name=”users” should be related to cache annotation.</p>
-</blockquote>
-<p>For examples:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Cacheable</span>(<span class="string">"users"</span>) <span class="comment">// correspond to p:name</span></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">query</span><span class="params">()</span> </span>&#123;</div><div class="line">	String sql = <span class="string">"select * from Sample"</span>;</div><div class="line">	<span class="keyword">return</span> template.query(sql, <span class="keyword">new</span> RowMapper&lt;User&gt;() &#123;</div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> User <span class="title">mapRow</span><span class="params">(ResultSet rs, <span class="keyword">int</span> line)</span> <span class="keyword">throws</span> SQLException </span>&#123;</div><div class="line">			User user = <span class="keyword">new</span> User();</div><div class="line">			user.setName(rs.getString(<span class="string">"Name"</span>));</div><div class="line">			user.setAge(rs.getInt(<span class="string">"Age"</span>));</div><div class="line">			<span class="keyword">return</span> user;</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">@CacheEvict</span>(value=<span class="string">"users"</span>, allEntries=<span class="keyword">true</span>) <span class="comment">// correspond to p:name</span></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(User user)</span> </span>&#123;</div><div class="line">	Object[] params = &#123;user.getName(), user.getAge()&#125;;</div><div class="line">	String sql = <span class="string">"delete Sample where Name=? and Age=?"</span>;</div><div class="line">	template.update(sql, params);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
+          <h2 id="Dao-Support"><a href="#Dao-Support" class="headerlink" title="Dao Support"></a>Dao Support</h2><p>Spring provides abstract class DaoSupport to make an abstraction. It has subclasses such as JdbcDaoSupport to integrate with JDBC, HibernateDaoSupport to integrate with Hibernate, JpaDaoSupport to integrate with JPA.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/15/Spring DaoSupport/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -662,31 +590,14 @@
 
       
         
-          
-            <h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><p>Spring AOP (Aspect-oriented programming) framework is used to modularize cross-cutting concerns in aspects. Put it simple, it’s just an interceptor to intercept some processes, for example, when a method is execute, Spring AOP can hijack the executing method, and add extra functionality before or after the method execution. (mkyong)</p>
-<p>Purpose: Build dependency between two different classes</p>
-<p>POJO: Plain-Old-Java-Object </p>
-<p>In Spring AOP, 4 type of advices are supported:</p>
-<ul>
-<li>Before advice – Run before the method execution</li>
-<li>After returning advice – Run after the method returns a result</li>
-<li>After throwing advice – Run after the method throws an exception</li>
-<li>Around advice – Run around the method execution, combine all three advices above.</li>
-</ul>
-<h2 id="ProxyFactoryBean"><a href="#ProxyFactoryBean" class="headerlink" title="ProxyFactoryBean"></a>ProxyFactoryBean</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"logProxy"</span> <span class="attr">class</span>=<span class="string">"org.springframework.aop.framework.ProxyFactoryBean"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"proxyInterfaces"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"target"</span> <span class="attr">ref</span>=<span class="string">""</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"interceptorNames"</span>&gt;</span><span class="tag">&lt;<span class="name">list</span>&gt;</span><span class="tag">&lt;/<span class="name">list</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="AspectJ"><a href="#AspectJ" class="headerlink" title="AspectJ"></a>AspectJ</h2><h3 id="Common-AspectJ-annotations"><a href="#Common-AspectJ-annotations" class="headerlink" title="Common AspectJ annotations:"></a>Common AspectJ annotations:</h3><ol>
-<li>@Before – Run before the method execution</li>
-<li>@After – Run after the method returned a result</li>
-<li>@AfterReturning – Run after the method returned a result, intercept the returned result as well.</li>
-<li>@AfterThrowing – Run after the method throws an exception</li>
-<li>@Around – Run around the method execution, combine all three advices above.</li>
-</ol>
-<blockquote>
-<p>In Spring configuration file, put “<span>&lt;</span>aop:aspectj-autoproxy /&gt;”, and define your Aspect (interceptor) and normal bean.</p>
-</blockquote>
-<p>add @Aspect before advice class.</p>
-
-          
+          <h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><p>Spring AOP (Aspect-oriented programming) framework is used to modularize cross-cutting concerns in aspects. Put it simple, it’s just an interceptor to intercept some processes, for example, when a method is execute, Spring AOP can hijack the executing method, and add extra functionality before or after the method execution. (mkyong)</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/14/Spring AOP/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -803,242 +714,18 @@
 
       
         
-          
-            <p>xmlns: xml naming space</p>
+          <p>xmlns: xml naming space</p>
 <blockquote>
 <p>解剖 iocconfig.xml</p>
 </blockquote>
 <h2 id="Containers"><a href="#Containers" class="headerlink" title="Containers"></a>Containers</h2><p>Spring provides the following two distinct types of containers: </p>
-<ol>
-<li><p>Spring BeanFactory Container</p>
-<ul>
-<li>The most commonly used BeanFactory implementation is the XmlBeanFactory class.</li>
-<li>It is usually preferred where the resources are limited like mobile devices or applet-based applications.</li>
-<li>Has lazy-loading feature for all beans. Its key subclass XmlBeanFactory is deprecated.</li>
-<li>Do not support annotation and has lazy-loading feature.</li>
-<li><p>e.g </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">XmlBeanFactory factory = <span class="keyword">new</span> XmlBeanFactory(<span class="keyword">new</span> ClassPathResource(<span class="string">"Beans.xml"</span>));</div><div class="line">HelloWorld obj = (HelloWorld) factory.getBean(<span class="string">"helloWorld"</span>);</div><div class="line">obj.getMessage();</div></pre></td></tr></table></figure>
-<p>In <strong>Beans.xml</strong> file:     </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span> = <span class="string">"helloWorld"</span> <span class="attr">class</span> = <span class="string">"com.mercury.HelloWorld"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span> = <span class="string">"message"</span> <span class="attr">value</span> = <span class="string">"Hello World!"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<ol>
-<li><p>Spring ApplicationContext Container</p>
-<ul>
-<li>The most commonly used ApplicationContext implementations are <strong>FileSystemXmlApplicationContext</strong>,<strong>ClassPathXmlApplicationContext</strong> and <strong>WebXmlApplicationContext</strong></li>
-<li>Support annotation</li>
-<li>Sub-interface of BeanFactory with more functionalities.</li>
-</ul>
-</li>
-</ol>
-<h2 id="Dependency-Injection"><a href="#Dependency-Injection" class="headerlink" title="Dependency Injection"></a>Dependency Injection</h2><table>
-<thead>
-<tr>
-<th style="text-align:center">Injection</th>
-<th style="text-align:center">Setter Methods Injection</th>
-<th style="text-align:center">Constructor Injection</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Tag</td>
-<td style="text-align:center"><span>&lt;</span>property&gt;</td>
-<td style="text-align:center"><span>&lt;</span>constructor-arg&gt;</td>
-</tr>
-<tr>
-<td style="text-align:center">Format</td>
-<td style="text-align:center"><span>&lt;</span>property name=”” value=””/&gt;</td>
-<td style="text-align:center"><span>&lt;</span>constructor-arg index=””(begin from 0) value=””/&gt;</td>
-</tr>
-<tr>
-<td style="text-align:center">Partial Dependency</td>
-<td style="text-align:center">Yse</td>
-<td style="text-align:center">No</td>
-</tr>
-<tr>
-<td style="text-align:center">Flexibility</td>
-<td style="text-align:center">high</td>
-<td style="text-align:center">low</td>
-</tr>
-</tbody>
-</table>
-<p>For reference type property injection, use “ref”</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Scope</th>
-<th style="text-align:center">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">singleton</td>
-<td style="text-align:center">A single instance per Spring IoC container (default)</td>
-</tr>
-<tr>
-<td style="text-align:center">prototype</td>
-<td style="text-align:center">Have any number of object instances</td>
-</tr>
-<tr>
-<td style="text-align:center">request</td>
-<td style="text-align:center">Only valid in the context of a web-aware Spring ApplicationContext</td>
-</tr>
-<tr>
-<td style="text-align:center">session</td>
-<td style="text-align:center">Only valid in the context of a web-aware Spring ApplicationContext</td>
-</tr>
-<tr>
-<td style="text-align:center">global-session</td>
-<td style="text-align:center">A global HTTP session. Only valid in the context of a web-aware Spring ApplicationContext</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Autowiring"><a href="#Autowiring" class="headerlink" title="Autowiring"></a>Autowiring</h3><p>Autowiring inject <span>&lt;</span>bean&gt; without using <constructor-arg> and <span>&lt;</span>property&gt;.</constructor-arg></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Mode</th>
-<th style="text-align:center">Description</th>
-<th style="text-align:center">Match what</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">no</td>
-<td style="text-align:center">Default setting, no autowiring</td>
-<td style="text-align:center">via ‘ref’ to match</td>
-</tr>
-<tr>
-<td style="text-align:center">byName</td>
-<td style="text-align:center">If the name of a bean is same as the name of other bean property, auto wire it</td>
-<td style="text-align:center">properties</td>
-</tr>
-<tr>
-<td style="text-align:center">byType</td>
-<td style="text-align:center">If data type of a bean is compatible with the data type of other bean property, auto wire it</td>
-<td style="text-align:center">propetites</td>
-</tr>
-<tr>
-<td style="text-align:center">constructor</td>
-<td style="text-align:center">Ff data type of a bean is same as the data type of other bean constructor argument, auto wire it</td>
-<td style="text-align:center">constructor</td>
-</tr>
-<tr>
-<td style="text-align:center">autodetect</td>
-<td style="text-align:center">If a default constructor is found, uses “constructor”; Otherwise, uses “byType”</td>
-<td style="text-align:center">constructor and properties</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>default priority: byType &gt; byName</p>
-</blockquote>
-<ul>
-<li>Usually we use constructor arguments for mandatory dependencies and setters for optional dependencies.</li>
-<li>You have to use constructor injection, not setter injection to inject immutable class</li>
-</ul>
-<p>Scope Relation<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Wrapper</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> User user;</div><div class="line">	<span class="keyword">private</span> Person p;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>(s: singleton | p: prototype)</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Wrapper(W) refer User(U)</th>
-<th style="text-align:center">Wrapper</th>
-<th style="text-align:center">Wrapper’s User</th>
-<th style="text-align:center">User</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">W:s &amp; U:s</td>
-<td style="text-align:center">Same</td>
-<td style="text-align:center">Same</td>
-<td style="text-align:center">Same</td>
-</tr>
-<tr>
-<td style="text-align:center">W:p &amp; U:s</td>
-<td style="text-align:center">Not same</td>
-<td style="text-align:center">Same</td>
-<td style="text-align:center">Same</td>
-</tr>
-<tr>
-<td style="text-align:center">W:s &amp; U:p</td>
-<td style="text-align:center">Same</td>
-<td style="text-align:center">Same</td>
-<td style="text-align:center">Not same</td>
-</tr>
-<tr>
-<td style="text-align:center">W:p &amp; U:p</td>
-<td style="text-align:center">Not same</td>
-<td style="text-align:center">Not same</td>
-<td style="text-align:center">Not same</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Singleton-Pattern"><a href="#Singleton-Pattern" class="headerlink" title="Singleton Pattern"></a>Singleton Pattern</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySingle</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> MySingle instance = <span class="function"><span class="keyword">null</span></span></div><div class="line">  <span class="keyword">public</span> <span class="keyword">private</span> <span class="title">MySingle</span><span class="params">()</span> &#123;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MySingle <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</div><div class="line">      instance = <span class="keyword">new</span> MySingle();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Annotation"><a href="#Annotation" class="headerlink" title="Annotation:"></a>Annotation:</h2><p>@Required: The @required annotation applies to bean property setter methods.</p>
-<p>@Autowired</p>
-<ol>
-<li>The @Autowired annotation can apply to bean property setter methods, non-setter methods, constructor and properties. </li>
-<li>It is auto wire the bean by matching data type.</li>
-</ol>
-<p>To enable @Autowired, you have to register “AutowiredAnnotationBeanPostProcessor”</p>
-<ul>
-<li>Include <span>&lt;</span>context:annotation-config/&gt; in bean configuration file.</li>
-<li>Include “<span>&lt;</span>bean<br>  class=”org.springframework.beans.factory.<br>annotation.AutowiredAnnotationBeanPostProcessor”&gt;” </li>
-</ul>
-<p>@Qualifier: The @Qualifier annotation along with @Autowired can be used to tell Spring about which bean should autowired.</p>
-<ul>
-<li><p>e.g. </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Qualifier</span>(<span class="string">"person1"</span>) <span class="comment">// person1 is bean id</span></div><div class="line"><span class="meta">@Autowired</span></div><div class="line"><span class="keyword">private</span> Person person;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Two-special-Injection"><a href="#Two-special-Injection" class="headerlink" title="Two special Injection"></a>Two special Injection</h2><h3 id="Collection-Injction"><a href="#Collection-Injction" class="headerlink" title="Collection Injction"></a>Collection Injction</h3><ul>
-<li>List</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"list"</span>&gt;</span> </div><div class="line"> 	<span class="tag">&lt;<span class="name">list</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>Item1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>Item2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">list</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
-<ul>
-<li>Set</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"set"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">set</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>100<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>200<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">set</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
-<ul>
-<li>Map</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"map"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">map</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"key1"</span> <span class="attr">value</span>=<span class="string">"100"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"key2"</span> <span class="attr">value</span>=<span class="string">"200"</span>/&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">map</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
-<ul>
-<li>Properties</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"properties"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">props</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"key3"</span>&gt;</span>value3<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"key4"</span>&gt;</span>value4<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">props</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="Singleton-Injection"><a href="#Singleton-Injection" class="headerlink" title="Singleton Injection"></a>Singleton Injection</h3><ul>
-<li>First Example:</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"ms"</span> <span class="attr">class</span>=<span class="string">"com.mercury.beans.MySingle"</span> <span class="attr">scope</span>=<span class="string">"prototype"</span> <span class="attr">factory-method</span>=<span class="string">"getInstance"</span>/&gt;</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>spring use reflection to call constructor to make many objects, but use getInstance factory-method to force getInstance() constructor called.</p>
-</blockquote>
-<ul>
-<li>Second Example:</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"ms"</span> <span class="attr">class</span>=<span class="string">"com.mercury.beans.MySingle"</span> <span class="attr">factory-method</span>=<span class="string">"getInstance"</span>/&gt;</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>use getInstance() to create object no matter inside or outside.</p>
-</blockquote>
-<h2 id="Stereotype"><a href="#Stereotype" class="headerlink" title="Stereotype"></a>Stereotype</h2><blockquote>
-<p>Put “context:component” in bean configuration file, it means, enable auto scanning feature in Spring. The base-package is indicate where are your components stored, Spring will scan this folder and find out the bean (annotated with @Component) and register it in Spring container.<br>e.g. <span>&lt;</span>context:component-scan base-package=”com.mercury.stereotype.beans”/&gt;</p>
-</blockquote>
-<p>@Component: Indicate this is class is an auto scan component.</p>
-<p>@Controller(controller package): Indicates a controller component in the presentation layer.</p>
-<p>@Service(Service package): Indicate Service component in the business layer.</p>
-<p>@Repository(DAO package): Indicates DAO component in the persistence layer.</p>
-<p>@Value<br>@Resource<br>@Autowired</p>
-<ul>
-<li>@Service(“AAA”) -&gt; getBean(“AAA”)</li>
-<li>lazy-init: set it “true” means the constructor of the bean won’t called until “getBean”.</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/12/2017-05-05 Spring loc/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
