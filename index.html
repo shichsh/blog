@@ -569,7 +569,18 @@
 <blockquote>
 <p>use getInstance() to create object no matter inside or outside.</p>
 </blockquote>
-<h2 id="Stereotype"><a href="#Stereotype" class="headerlink" title="Stereotype"></a>Stereotype</h2><p>@Component<br>@Controller(controller package)<br>@Service(Service package)<br>@Repository(DAO package)<br>@Value<br>@Resource<br>@Autowired</p>
+<h2 id="Stereotype"><a href="#Stereotype" class="headerlink" title="Stereotype"></a>Stereotype</h2><blockquote>
+<p>Put “context:component” in bean configuration file, it means, enable auto scanning feature in Spring. The base-package is indicate where are your components stored, Spring will scan this folder and find out the bean (annotated with @Component) and register it in Spring container.</p>
+</blockquote>
+<p>@Component: Indicate this is class is an auto scan component.</p>
+<p>@Controller(controller package): Indicates a controller component in the presentation layer.</p>
+<p>@Service(Service package): Indicate Service component in the business layer.</p>
+<p>@Repository(DAO package): Indicates DAO component in the persistence layer.</p>
+<p>@Value<br>@Resource<br>@Autowired</p>
+<ul>
+<li>@Service(“AAA”) -&gt; getBean(“AAA”)</li>
+<li>lazy-init: set it “true” means the constructor of the bean won’t called until “getBean”.</li>
+</ul>
 
           
         
