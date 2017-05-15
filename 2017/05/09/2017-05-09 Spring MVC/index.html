@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Spring," />
 
 
 
@@ -91,14 +91,14 @@
 
 
 <meta name="description" content="Spring FeaturesSpring MVC is different from other MVC frameworks. It is a method driven, not mapping driven framework. Mapping is determined by annotation, instead of explicitly defined in configurati">
-<meta name="keywords">
+<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring MVC">
 <meta property="og:url" content="http://yoursite.com/2017/05/09/2017-05-09 Spring MVC/index.html">
 <meta property="og:site_name" content="shichsh">
 <meta property="og:description" content="Spring FeaturesSpring MVC is different from other MVC frameworks. It is a method driven, not mapping driven framework. Mapping is determined by annotation, instead of explicitly defined in configurati">
 <meta property="og:image" content="http://yoursite.com/media/7B6741661725AD913E010FBDB208E02D.jpg">
-<meta property="og:updated_time" content="2017-05-10T03:45:13.000Z">
+<meta property="og:updated_time" content="2017-05-15T19:23:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring MVC">
 <meta name="twitter:description" content="Spring FeaturesSpring MVC is different from other MVC frameworks. It is a method driven, not mapping driven framework. Mapping is determined by annotation, instead of explicitly defined in configurati">
@@ -353,11 +353,20 @@
         <h2 id="Spring-Features"><a href="#Spring-Features" class="headerlink" title="Spring Features"></a>Spring Features</h2><p>Spring MVC is different from other MVC frameworks. It is a method driven, not mapping driven framework. Mapping is determined by annotation, instead of explicitly defined in configuration file.</p>
 <a id="more"></a>
 <h2 id="Spring-Workflow"><a href="#Spring-Workflow" class="headerlink" title="Spring Workflow"></a>Spring Workflow</h2><p>A request goes through DispatcherServlet and uses @Controller to find a controller class. And then it uses @RequestMapping to find the corresponding method to handle the request. Then the method returns a ModelAndView object, in which model contains data and view contains a string that will be converted to a real url by ViewResolve.</p>
+<blockquote>
+<p>DispatcherServlet -&gt; find @Controller -&gt; map @RequestMapping -&gt; use ViewResolve to concatenate a real url -&gt; find target jsp file.</p>
+</blockquote>
+<p>In old Spring2 version, we use </p>
+<ul>
+<li>SimpleUrlHandlerMapping</li>
+<li>BeanNameUrlHandlerMapping</li>
+</ul>
+<p>to handle our mapping.</p>
 <h2 id="A-Spring-MVC-Demo"><a href="#A-Spring-MVC-Demo" class="headerlink" title="A Spring MVC Demo"></a>A Spring MVC Demo</h2><ol>
 <li><p>File -&gt; new -&gt; Dynamic Web Project -&gt; project name: SpringMVCDemo -&gt; Next -&gt; Next -&gt; check “Generate web.xml deployment descriptor” -&gt; Finish</p>
 </li>
 <li><p>Here is the content of web.xml:</p>
- <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> </span></div><div class="line">  <span class="attr">xmlns</span>=<span class="string">"http://java.sun.com/xml/ns/javaee"</span> </div><div class="line"> <span class="attr">xsi:schemaLocation</span>=<span class="string">"</span></div><div class="line">	http://java.sun.com/xml/ns/javaee </div><div class="line">	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" <span class="attr">id</span>=<span class="string">"WebApp_ID"</span> <span class="attr">version</span>=<span class="string">"3.0"</span>&gt;</div><div class="line"> <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>SpringMVCDemo<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">welcome-file-list</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">welcome-file</span>&gt;</span>index.jsp<span class="tag">&lt;/<span class="name">welcome-file</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">welcome-file-list</span>&gt;</span></div><div class="line"> <span class="comment">&lt;!-- Spring MVC --&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>spring<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span></div><div class="line"> 		org.springframework.web.servlet.DispatcherServlet </div><div class="line"> <span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></div><div class="line"> 	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>spring<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line"> 	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.html<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></div></pre></td></tr></table></figure>
+ <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line">  <span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> </span></div><div class="line">  <span class="attr">xmlns</span>=<span class="string">"http://java.sun.com/xml/ns/javaee"</span> </div><div class="line"> <span class="attr">xsi:schemaLocation</span>=<span class="string">"</span></div><div class="line">	http://java.sun.com/xml/ns/javaee </div><div class="line">	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" <span class="attr">id</span>=<span class="string">"WebApp_ID"</span> <span class="attr">version</span>=<span class="string">"3.0"</span>&gt;</div><div class="line"> <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>SpringMVCDemo<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">welcome-file-list</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">welcome-file</span>&gt;</span>index.jsp<span class="tag">&lt;/<span class="name">welcome-file</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">welcome-file-list</span>&gt;</span></div><div class="line"> <span class="comment">&lt;!-- Spring MVC --&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>spring<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span></div><div class="line"> 		org.springframework.web.servlet.DispatcherServlet <span class="comment">&lt;!-- auto find "****"-servlet --&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></div><div class="line"> 	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>spring<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></div><div class="line"> 	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>*.html<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>In lib folder, import jar files:<br><img src="/media/7B6741661725AD913E010FBDB208E02D.jpg" alt="7B6741661725AD913E010FBDB208E02D"></p>
 </li>
@@ -408,6 +417,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+        </div>
       
 
       
@@ -502,7 +517,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -510,6 +525,15 @@
 
           
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>
