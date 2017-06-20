@@ -1,0 +1,793 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="JQuery Questions">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JQuery Questions">
+<meta property="og:url" content="http://yoursite.com/2017/06/14/JQuery-Questions/index.html">
+<meta property="og:site_name" content="shichsh">
+<meta property="og:description" content="JQuery Questions">
+<meta property="og:updated_time" content="2017-06-20T15:41:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JQuery Questions">
+<meta name="twitter:description" content="JQuery Questions">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/14/JQuery-Questions/"/>
+
+
+
+
+
+  <title>JQuery Questions | shichsh</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-98629548-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">shichsh</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">As in all things, you get to have whatever you choose.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-geek">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-apple"></i> <br />
+            
+            Geek
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/14/JQuery-Questions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chengsheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shichsh">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JQuery Questions
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-14T15:56:53-04:00">
+                2017-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JQuery Questions</p>
+<a id="more"></a>
+<ol>
+<li><p>Avoiding conflicts by using jQuery<br> \$.noConflict();<br> -&gt; then use jQuery instead of “\$”<br> var jq = $.noConflict(); // customized shortcut</p>
+</li>
+<li><p>jQuery Media queries<br> if(\$(window).width() &lt; 481)<br> {    // It’s a Phone.}<br> elseif(\$(window).width() &lt; 769)<br> {    // It’s a tablet.}<br> else { // It’s a desktop/laptop.}</p>
+<p> Or 3rd party library Modernizer.</p>
+</li>
+<li><p>What is jQuery selected<br> Select the pre-selected item(s) in a drop-down list<br> This selector will not work on checkboxes or radio buttons. Use the :checked selector instead.</p>
+</li>
+<li><p>What is jQuery promise<br> It is a deferred object that has immutable state, you can add callback function to your deferred object.</p>
+</li>
+<li><p>How do you make ajax call in JQuery? What are the attributes in ajax call?<br> $.ajax()<br> url, type(Specifies the type of request), dataType(The data type expected of the server response), async, success</p>
+</li>
+<li><p>Different between jQuery and javascript<br> JQuery: jQuery is a JavaScript Library. HTML/DOM manipulation, CSS manipulation, HTML event methods, Effects and animations, AJAX call, Utilities.<br> JavaScript: is a high-level, dynamic, untyped, interpreted run-time language.</p>
+</li>
+<li><p>Explain ready status in jQuery<br> The ready event occurs when the DOM (document object model) has been loaded.</p>
+</li>
+<li><p>What is the first line you use to start jQuery?<br> you reference the link file with the HTML &lt;<span></span>script&gt; tag</p>
+</li>
+<li><p>jQuery selector and how to select even rows?<br> $(:even) (: colon)</p>
+</li>
+<li><p>How to add css after select some items using jQuery?<br>$().css()</p>
+</li>
+<li><p>How many years of Experience in jQuery? Why is jQuery so popular(If his answer includes Html DOM - He is good)?<br>What features of JQuery has he/she worked on?<br>jQuery make it much easier to use JavaScript on your website.<br>jQuery also simplifies a lot of the complicated things from JavaScript, like AJAX calls and DOM manipulation.</p>
+</li>
+<li><p>jQuery vs Angular</p>
+</li>
+<li><p>What is jQuery? What is jqPlot? How to do Ajax? What tool you used to debug javascript/jquery<br>jqPlot is a plotting and charting plugin for the jQuery Javascript framework.<br>Ajax:<br>The load() method loads data from a server and puts the returned data into the selected element. $(selector).load(URL,data,callback);<br>The jQuery get() and post() methods are used to request data from the server with an HTTP GET or POST request.</p>
+</li>
+<li><p>AngularJS with JQuery</p>
+</li>
+<li><p>AngularJS vs JQuery, why use them together?<br>jQuery serves different purpose than AngularJS</p>
+</li>
+<li><p>Deep copy object in jquery<br>.clone()</p>
+</li>
+<li><p>How would you find specific element of a list in jQuery?<br>.index()</p>
+</li>
+<li><p>How to add attribute in jQuery?<br>\$(selector).attr(attribute,value)<br>$(selector).attr(attribute,function(index,currentvalue))</p>
+</li>
+<li><p>Have you used third party JS library?<br>JQuery, Bootstrap, Backbone JS</p>
+</li>
+<li><p>how did you use javascript/jquery in your project</p>
+</li>
+<li><p>What’s the jQuery chain<br>Chaining allows us to run multiple jQuery methods (on the same element) within a single statement.</p>
+</li>
+<li><p>Differences and similarities between angular, jQuery, backbone</p>
+</li>
+</ol>
+<ol>
+<li>Anything to think about on the HTML and jQuery perspectives when you create responsive application?</li>
+</ol>
+<ol>
+<li><p>What’s the jQuery function like in that application. ($.ajax)</p>
+</li>
+<li><p>Do you use the method ajax in jQuery and where do you handle the data back?<br>for example, $.get(a, b), a is URL, b is callback function, in b(c, d), c is data, d is status.</p>
+</li>
+<li><p>What does jquery $ mark mean? How does JQuery call web service?<br>shortcut to jQuery functions, it is a jQuery object.<br>use AJAX call</p>
+</li>
+<li><p>If there is no jQuery library, what feature of angularJS cannot use?</p>
+</li>
+</ol>
+<ol>
+<li><p>Talk about your HTML, CSS, JS, jQuery experience.</p>
+</li>
+<li><p>JQuery selector type and example.</p>
+</li>
+<li><p>jQuery deferred object.<br>var deferred = $.Deferred()<br>3 phases of deferred object: pending, resolved, rejected<br>use deferred.done and .fail<br>deferred.then() accept more than one parameters</p>
+</li>
+<li><p>Have you use jQuery with AngularJS?</p>
+</li>
+<li><p>In jQuery how to select different elements using different ways<br>JQuery \$(“#x”), \$(“.y”), $(“h2”) </p>
+</li>
+<li><p>How to display or disapear an element in three ways using jquery<br> show(), hide(), slideDown(), slideUp()<br> css opacity, visibility, display</p>
+</li>
+<li><p>jQuery selector, sudo class, and find elements using parent, sibling, and child<br>$(‘div’.class).parent(), .children(), .siblings()</p>
+</li>
+<li><p>Select nth element using jquery<br>$().eq(n - 1);</p>
+</li>
+<li><p>Use either jQuery or angular to write a service call(to post username and password)</p>
+<p>jQuery: AJAX call<br>$.ajax({</p>
+<pre><code>type:&apos;Get&apos;,
+url:&apos;http://mysite.com/mywebservice&apos;,
+success: function(data) {
+ alert(data);
+}
+</code></pre><p>})    </p>
+<p>Angular: \$http<br>\$http.get(url)<br>.then(function(response) {</p>
+<pre><code>$scope.myWelcome = response.data;
+</code></pre><p>});</p>
+</li>
+<li><p>jQuery event Propagation</p>
+</li>
+<li><p>What is the main reason you use jQuery and Angular JS?</p>
+</li>
+<li><p>For class selector and id selector, which one has higher priority?<br>id, id has better performance than class</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/17/Terminology/" rel="next" title="Terminology">
+                <i class="fa fa-chevron-left"></i> Terminology
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/13/JS-Questions/" rel="prev" title="JS Questions">
+                JS Questions <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Chengsheng" />
+          <p class="site-author-name" itemprop="name">Chengsheng</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal Blog</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chengsheng</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

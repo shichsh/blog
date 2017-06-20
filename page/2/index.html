@@ -272,7 +272,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/09/2017-05-09 Spring MVC/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/18/JavaScript-Basic-demo10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chengsheng">
@@ -294,8 +294,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/09/2017-05-09 Spring MVC/" itemprop="url">
-                  Spring MVC
+                <a class="post-title-link" href="/2017/05/18/JavaScript-Basic-demo10/" itemprop="url">
+                  JavaScript Basic demo10
                 </a>
               
             
@@ -311,8 +311,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-09T00:00:00-04:00">
-                2017-05-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T14:53:40-04:00">
+                2017-05-18
               </time>
             
 
@@ -347,14 +347,16 @@
 
       
         
-          <h2 id="Spring-Features"><a href="#Spring-Features" class="headerlink" title="Spring Features"></a>Spring Features</h2><p>Spring MVC is different from other MVC frameworks. It is a method driven, not mapping driven framework. Mapping is determined by annotation, instead of explicitly defined in configuration file.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/05/09/2017-05-09 Spring MVC/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="JS-Promise-continue"><a href="#JS-Promise-continue" class="headerlink" title="JS Promise (continue)"></a>JS Promise (continue)</h2><p>```JavaScript<br>var assert = require(“assert”);</p>
+<p>function task1() {<br>    console.log(“Executing task1”);<br>}</p>
+<p>function task2() {<br>    console.log(“Executing task2”);<br>}</p>
+<p>function task3() {<br>    console.log(“Executing task3”);<br>}</p>
+<p>function t1() {<br>    return new Promise(function(resolve, reject) {<br>        setTimeout(function() {<br>            task1();<br>            resolve(“Task1 is finished”);<br>        }, 500);<br>    });<br>}</p>
+<p>function t2() {<br>    return new Promise(function(resolve, reject) {<br>        setTimeout(function() {<br>            task2();<br>            resolve(“Task2 is finished”);<br>        }, 1000);<br>    });<br>}</p>
+<p>function t3() {<br>    return new Promise(function(resolve, reject) {<br>        setTimeout(function() {<br>            task3();<br>            // resolve(“Task3 is finished”);<br>            reject(“Task3 is rejected!”);<br>        }, 700);<br>    });<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">### Three status in promise: pending, fulfilled(resolved), rejected</div><div class="line"></div><div class="line">```JavaScriptvar promise = t1();promise.then(function(resp) &#123;	console.log(resp);	return t2();&#125;).then(function(resp) &#123;	console.log(resp);	return t3();&#125;).then(function(resp) &#123;	// console.log(resp);//&#125;);&#125;, function(error) &#123;	console.log(error);&#125;);// if status is fulfilled, it hold the data foreverpromise.then(function(resp) &#123;   // still hold the data, won&apos;t use 500ms	assert.equal(&quot;Task1 is finished&quot;, resp);&#125;);// Promise / Deferred Object(inheritance from Promise)// JS regular expression// var x = &quot;^[A-Z]&quot;, x = /^[A-Z]/</div></pre></td></tr></table></figure></p>
+
+          
         
       
     </div>
@@ -396,7 +398,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/04/Hibernate-Mapping/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/18/JavaScript-Basic-demo09/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chengsheng">
@@ -418,8 +420,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/04/Hibernate-Mapping/" itemprop="url">
-                  Hibernate Mapping
+                <a class="post-title-link" href="/2017/05/18/JavaScript-Basic-demo09/" itemprop="url">
+                  JavaScript Basic demo09
                 </a>
               
             
@@ -435,8 +437,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-04T15:52:19-04:00">
-                2017-05-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T14:45:33-04:00">
+                2017-05-18
               </time>
             
 
@@ -471,16 +473,31 @@
 
       
         
-          <h2 id="Mapping-for-Composite-Primary-Key"><a href="#Mapping-for-Composite-Primary-Key" class="headerlink" title="Mapping for Composite Primary Key"></a>Mapping for Composite Primary Key</h2><p>Example:<br>Table:Person( <em>FirstName</em> , <em>LastName</em> , Age)<br>Class: Person(firstName, lastName, age)</p>
-<p>Class must implements Serial izable interface</p>
-<p>Mapping File: <em>*</em>.hbm.xml4</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/05/04/Hibernate-Mapping/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h2 id="JS-Promise"><a href="#JS-Promise" class="headerlink" title="JS Promise"></a>JS Promise</h2><pre><code class="JavaScript"><span class="keyword">var</span> assert = <span class="built_in">require</span>(<span class="string">"assert"</span>);
+
+<span class="comment">// Callback function</span>
+setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+    <span class="built_in">console</span>.log(<span class="string">"This is a callback function"</span>);
+}, <span class="number">100</span>);
+<span class="built_in">console</span>.log(<span class="string">"After callback function"</span>);
+<span class="xml"><span class="comment"><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### Command Pattern(GoF)(sync) step by stepint f(int x) &#123;	return 2 * x;&#125;int y = f(10);print(y); -&gt; 20y can not do anything requset - response pattern</div><div class="line">********************(async) do togetherint z = 0;void f(int x) &#123;	z = 2 * x;&#125;f(10);print(z);req resp third party```JavaScriptfunction task1() &#123;	console.log(&quot;Executing task1&quot;);&#125;function task2() &#123;	console.log(&quot;Executing task2&quot;);&#125;function task3() &#123;	console.log(&quot;Executing task3&quot;);&#125;// Callback Hells -&gt; asyncsetTimeout(function() &#123;	task1();	setTimeout(function() &#123;		console.log(&quot;End of Task1&quot;);		task2();		setTimeout(function() &#123;			console.log(&quot;End of Task2&quot;);			task3();			console.log(&quot;End of Task3&quot;);		&#125;, 700)	&#125;, 1000)&#125;, 500)In JS, promise solve the callback hell problem</div></pre></td></tr></table></figure></span>
+
+* A trick
+
+```JavaScript
+function foo() {
+    return  // return + new line == return ;
+    {
+        name: "Alice"
+    };
+}
+
+var x = foo()
+x -&gt; undefined</span>
+</code></pre>
+
+          
         
       
     </div>
@@ -522,7 +539,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/03/Hibernate Basic/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/18/JavaScript-Basic-demo08/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chengsheng">
@@ -544,8 +561,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/03/Hibernate Basic/" itemprop="url">
-                  Hibernate Basic
+                <a class="post-title-link" href="/2017/05/18/JavaScript-Basic-demo08/" itemprop="url">
+                  JavaScript Basic demo08
                 </a>
               
             
@@ -561,8 +578,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-03T23:43:13-04:00">
-                2017-05-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T11:35:24-04:00">
+                2017-05-18
               </time>
             
 
@@ -597,23 +614,19 @@
 
       
         
-          <h2 id="Caching"><a href="#Caching" class="headerlink" title="Caching"></a>Caching</h2><ul>
-<li>First Level Caching: Caching on Session(Default)</li>
-<li>Second Level Caching: Caching on SessionFactory, which is a caching across different sessions and needs to be configured.</li>
-</ul>
-<p>How does Hibernate find an object? </p>
+          
+            <h2 id="JS-Closure"><a href="#JS-Closure" class="headerlink" title="JS Closure"></a>JS Closure</h2><blockquote>
+<p>JS closure is a function that is defined in another function. The inner function can access all the local variables of the outer function. If the inner function is returned, then the local variable of the outer function is still alive after the outer function is executed.</p>
+</blockquote>
 <ul>
-<li>Check whether this object is cached in the session</li>
-<li>Check whether this object is cached in the SessionFactory</li>
-<li>Go to database to run a query to find this object.</li>
+<li>Disadvantage: Closure might result memory leak</li>
 </ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/05/03/Hibernate Basic/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>```JavaScript<br>var assert = require(“assert”);</p>
+<p>function outer() {<br>    var m = 10;<br>    return function(x) {<br>        return x * m;<br>    }<br>}<br>var inner = outer();        // Now inner is a returned function that holds local variable m<br>assert.equal(20, inner(2));<br>assert.ok(typeof inner === “function”);</p>
+<p>// Module Pattern<br>function getCounter() {<br>    var count = 0;<br>    return {<br>        getCount: function() {<br>            return count;<br>        },<br>        setCount: function(c) {<br>            count = c;<br>        },<br>        increase: function() {<br>            count++;<br>        }<br>    }<br>}<br>var myCount = getCounter();<br>assert.equal(0, myCount.getCount());<br>myCount.setCount(10);<br>assert.equal(10, myCount.getCount());<br>myCount.increase();<br>assert.equal(11, myCount.getCount());<br>assert.equal(undefined, myCount.count);<br>myCount.count = 100;<br>assert.equal(11, myCount.getCount());<br>assert.equal(100, myCount.count);</p>
+<p>// An example<br>function MyClass() {<br>    this.x = 100; // For the first time, “this” is myClass<br>    var y = “abc”;<br>    var getX = function() {<br>        console.log(this.x);  // For the first time, “this” is window, window has no x variable<br>        console.log(y);<br>    };<br>    getX();   // getX.call(this)<br>    this.getY = function() {<br>        console.log(this.x);<br>        console.log(y);<br>    }<br>}<br>var myClass = new MyClass();<br>myClass.getY();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">## Dynamic Naming Space -&gt; dependency injection</div><div class="line"></div><div class="line">```JavaScriptfunction fetch(context) &#123;	var count = 0;	context.getCount = function() &#123;		return count;	&#125;;	context.setCount = function(c) &#123;		count = c;	&#125;&#125;var o = &#123;count: 100&#125;;fetch(o);assert.equal(0, o.getCount());o.setCount(10);assert.equal(10, o.getCount());assert.equal(100, o.count);// Application 1: Singletonvar MySingle = (function() &#123;	var instance;	return &#123;		getInstance: function() &#123;			if (!instance) instance = new Object();			return instance;		&#125;	&#125;&#125;)();var ms1 = MySingle.getInstance();var ms2 = MySingle.getInstance();assert.ok(ms1===ms2);// Application 2: Define a function that returns 1 at the first, // returns 2 at the second time, and so onvar increase = (function() &#123;	var count = 1;	return function() &#123;		return count++;	&#125;&#125;)();assert.equal(1, increase());assert.equal(2, increase());assert.equal(3, increase());// Application 3: for (var i = 1; i &lt;= 5; i++) &#123;	/*	setTimeout(function() &#123;		console.log(i);	&#125;, 100 * i);  	*/	// same to set 0 ms, the callback function will be put to 	// the queue at last	setTimeout(handle(i), 0);&#125;// setTimeout(callback, ms) // callback functionfunction handle(index) &#123;	return function() &#123;		console.log(index);	&#125;&#125;</div></pre></td></tr></table></figure></p>
+
+          
         
       
     </div>
@@ -655,7 +668,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/03/Hibernate环境配置 (Demo)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/18/JavaScript-Basic-demo07/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chengsheng">
@@ -677,8 +690,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/03/Hibernate环境配置 (Demo)/" itemprop="url">
-                  Hibernate环境配置 (Demo)
+                <a class="post-title-link" href="/2017/05/18/JavaScript-Basic-demo07/" itemprop="url">
+                  JavaScript Basic demo07
                 </a>
               
             
@@ -694,8 +707,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-03T22:20:21-04:00">
-                2017-05-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-18T11:12:32-04:00">
+                2017-05-18
               </time>
             
 
@@ -730,10 +743,10 @@
 
       
         
-          <p>Hibernate配置环境：<br>Java SE8<br>Eclipse Mars<br>Hibernate 3.2<br>Oracle 10g Express</p>
+          <h2 id="JS-Prototype-continued"><a href="#JS-Prototype-continued" class="headerlink" title="JS Prototype (continued)"></a>JS Prototype (continued)</h2>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/03/Hibernate环境配置 (Demo)/#more" rel="contents">
+            <a class="btn" href="/2017/05/18/JavaScript-Basic-demo07/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -774,7 +787,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -819,7 +832,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -832,7 +845,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

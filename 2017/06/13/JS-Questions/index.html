@@ -1,0 +1,848 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Basic JavaScript questions">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS Questions">
+<meta property="og:url" content="http://yoursite.com/2017/06/13/JS-Questions/index.html">
+<meta property="og:site_name" content="shichsh">
+<meta property="og:description" content="Basic JavaScript questions">
+<meta property="og:updated_time" content="2017-06-19T01:59:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS Questions">
+<meta name="twitter:description" content="Basic JavaScript questions">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/13/JS-Questions/"/>
+
+
+
+
+
+  <title>JS Questions | shichsh</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-98629548-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">shichsh</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">As in all things, you get to have whatever you choose.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-geek">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-apple"></i> <br />
+            
+            Geek
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/13/JS-Questions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chengsheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shichsh">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JS Questions
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-13T23:37:17-04:00">
+                2017-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Basic JavaScript questions</p>
+<a id="more"></a>
+<ol>
+<li><p>What is the difference between == and ===?<br> For Primitive type, == checks their values, === will check their types first and then check their values.<br> For objects, both == and === compare their references</p>
+</li>
+<li><p>What is closure? What is the drawback(disadvantage) of it?  memory leak<br> JS closure is a function that is defined in another function. The inner function can access all the local variables of the outer function. If the inner function is returned, then the local variable of the outer function is still alive after the outer function is executed.<br> Disadvantage: Closure might result memory leak</p>
+</li>
+<li><p>Difference between promise and deferred<br> A promise is an object that may produce a single value some time in the future.It has then() function to add callback function.<br> Defer is a Promise and defer hold parameter. Only JQuery and Angular has defer(it is Promise too). JS only has Promise.</p>
+</li>
+<li><p>What is object in JS?<br> If the input is an object, call Object() of the input, it returns this object itself, not new object created </p>
+</li>
+<li><p>Can a function be assigned to a variable? Yes</p>
+</li>
+<li><p>What is hoisting in JS?<br> a variable can be declared after it has been used.</p>
+</li>
+<li><p>How to achieve dependency injection by using native JS? How about Angular DI?<br> dynamic naming space<br> call(), apply(), bind()</p>
+</li>
+<li><p>What JS library did you use?<br> JQuery, Bootstrap, Backbone, Node JS</p>
+</li>
+<li><p>What JS framework did you use?<br> Angular JS, React, Vue JS</p>
+</li>
+<li><p>How did you do unit testing in JS?<br>jasmine, mocha</p>
+</li>
+<li><p>How to test private variables in JS?<br>No private variables in JS. If it is in closure, use getter and setter methods.</p>
+</li>
+<li><p>Describe prototype in JS<br>Each object has a prototype and inherits all the properties from its prototype. The object prototype is also an object and thus has its own prototype. Thus we get a prototype chain until Object.prototype, whose prototype is null</p>
+</li>
+<li><p>Compare apply, call and bind<br>The first parameter of call and apply is “this” object. Apply method use an array as the parameters of the function. Bind does not execute this function before giving parameters.</p>
+</li>
+<li><p>Difference between JS object and JSON object<br>JSON is JavaScript Object Notation. key-value pair. In JSON all keys must be quoted</p>
+</li>
+<li><p>What is CORS issue?<br>Cross-origin resource sharing (CORS) is a mechanism that allows restricted resources (e.g. fonts) on a web page to be requested from another domain outside the domain from which the first resource was served.</p>
+</li>
+<li><p>What is defer attribute in <script> tag?<br>the script is executed when the page has finished parsing.</p>
+</li>
+<li><p>How to add custom header in AJAX call?<br>$$AJAX header</p>
+</li>
+<li><p>How to add an element at the beginning of an array?<br>unshift or splice</p>
+</li>
+<li><p>How to do inheritance in JS?<br>Use Prototype</p>
+</li>
+<li><p>How to do encapsulation in JS?<br>closure</p>
+</li>
+<li><p>How to make static fields in JS?<br>var a = function A();<br>a.x = y; // static member</p>
+</li>
+<li><p>How to implement multi-threading in JS?<br>JS runs in a single execution thread, but we can do is simulate multi-threading.</p>
+</li>
+<li><p>How can you implement abstract class in JavaScript?<br>function A() {</p>
+<pre><code>if (this instanceof A) 
+return error;
+</code></pre><p>}</p>
+</li>
+<li><p>Difference between new and Object.create?    create -&gt; child object<br>the create() method only uses the prototype and not the constructor.</p>
+</li>
+<li><p>Tell me ES6 new features. How to convert ES6 to ES5?<br>Classes, Modules, Promises</p>
+</li>
+<li><p>What are JS primitive types?<br>number, boolean, string, undefined, null </p>
+</li>
+<li><p>How to create an employee object?<br>constructor<br>var employee = { // key - value pair </p>
+<pre><code>name: &quot;Alice&quot;,
+age: 30,
+hello: function() {
+    return &quot;hello &quot; + this.name;
+}
+</code></pre><p>};</p>
+</li>
+<li><p>What is associative array in JS?    var a = []; a.x = 1; a.y=”abc”<br>Arrays with named indexes are called associative arrays. But JS does not support it. It supports number indexes.</p>
+</li>
+<li><p>How to change scope of this?<br>User call(), apply() and bind() method.</p>
+</li>
+<li><p>Difference between object.method and object.prototype.method</p>
+</li>
+<li><p>How event bubbles in JS?<br>Event propagation</p>
+</li>
+<li><p>List some JS events<br>onchange, onclick, onmouseover, onload</p>
+</li>
+<li><p>What is the scope in JS?<br>In JavaScript, scope is the set of variables, objects, and functions you have access to. Two scope: global scope and local scope.</p>
+</li>
+<li><p>Difference between object and array<br>Arrays are a special type of objects.<br>Arrays use numbers to access its “elements”.<br>Objects use names to access its “members”.</p>
+</li>
+<li><p>How to change the scope in JS?<br>User call(), apply() and bind() method.</p>
+</li>
+<li><p>How to make object immutable in JS?<br>Object.freeze(obj)</p>
+</li>
+<li><p>What debug tool you use in JS?<br>Console.log, Chrome</p>
+</li>
+<li><p>How to share data between different two function in JS?<br>Use function parameters. Or declare it in higher scope.<br>global, dynamic naming space, dependency injection</p>
+</li>
+<li><p>What is JS method for iterating a collection? forEach()</p>
+</li>
+<li><p>Why closure can be used to realize encapsulation?<br>after you return inner function, you can not access to the field of outer function.</p>
+</li>
+<li><p>How do you write a class in JS?<br>constructor first and then write method in its prototype</p>
+</li>
+<li><p>How does the method in parent scope have access to the variables in the child scope?<br>call(), apply()</p>
+</li>
+<li><p>How do you write promise?<br>new Promise(function(resolve, reject) {</p>
+<pre><code>setTimeout(function() {
+}
+</code></pre><p>}.then(function() {<br>});</p>
+</li>
+<li><p>Explain JS strict mode<br>make it easier to write secure JavaScript<br>E.g. it is not allowed to use a variable or object without declaring it. not allowed to delete a variable, object or function. </p>
+</li>
+<li><p>How to optimize the size of your JS project? minimum version</p>
+</li>
+<li><p>Explain callback function in JS.<br>A callback function a function that is passed to another function as a parameter, and the callback function is called (or executed) inside the otherFunction.</p>
+</li>
+<li><p>When would you declare variable without using “var”?<br>global variables</p>
+</li>
+<li><p>How to set a callback function into a promise?<br>.then()</p>
+</li>
+<li><p>Explain event propagation<br>3 phases of DOM events: Capturing, Targeting, Bubbling<br>•    Capturing Phase – When an event occurs in the DOM, notification of the event is passed starting at the top of the DOM tree and passing down through all parent element nodes all the way to the target node where the event occurred.<br>•    Target Phase – After the capturing phase occurs, the Target phase occurs. The target phase only includes a notification of Node where the event took place.<br>•    Bubbling Phase – This is the final phase to occur, although many people think this is the first phase. In the bubbling phase a notice is passed from the target Node up through all of the parent Nodes all the way back to the top root of the DOM.</p>
+</li>
+<li><p>How are DOM utilized in JS?<br>Document<br>The document object represents your web page.<br>If you want to access any element in an HTML page, you always start with accessing the document object.</p>
+</li>
+<li><p>How are event handlers utilized in JS?<br>Event handlers.<br>addEventListener, removeEventListener</p>
+</li>
+<li><p>What is JS self executing function?<br>Function expressions can be made “self-invoking” if the expression is followed by ().<br>IIFE (immediately invoke function expression)</p>
+</li>
+<li><p>Difference between null and undefined<br>undefined means a variable has been declared but has not yet been assigned a value. On the other hand, null is an assignment value. It can be assigned to a variable as a representation of no value.<br>Unassigned variables are initialized by JavaScript with a default value of undefined.JavaScript never sets a value to null. That must be done programmatically.</p>
+</li>
+<li><p>What are types of error in JS?<br>6types: SyntaxError, ReferenceError, RangeError, TypeError, URIError, EvalError</p>
+</li>
+<li><p>What is module pattern?<br>In JavaScript, the Module pattern is used to further emulate the concept of classes in such a way that we’re able to include both public/private methods and variables inside a single object, thus shielding particular parts from the global scope. What this results in is a reduction in the likelihood of our function names conflicting with other functions defined in additional scripts on the page.</p>
+</li>
+<li><p>Can <script> tag in the body of the HTML page?<br>Yes</p>
+</li>
+<li><p>If JSON data is string, what do you do in JS?<br>JSON.parse()<br>find JSON API</p>
+</li>
+<li><p>When to use var in JS?<br>declare a new variable and use it as local scope</p>
+</li>
+<li><p>Is callback synchronous or asynchronous?<br>both</p>
+</li>
+<li><p>Show me callback hell<br>function async(arg, callback) {<br>  console.log(‘参数为 ‘ + arg +’ , 1秒后返        回结果’);<br>  setTimeout(function() { callback(arg *         2); }, 1000);<br> }<br>async(1, function(value){<br>  async(value, function(value){</p>
+<pre><code>async(value, function(value){
+  async(value, function(value){
+    async(value, function(value){
+      async(value, final);
+    });
+  });
+});
+</code></pre><p>  });<br>});</p>
+</li>
+<li><p>Different ways to invoke a function in Javascript </p>
+<ol>
+<li>Invoking a function as a function<br> foo();<br> foo() == window.foo()</li>
+<li>The this keyword</li>
+<li>Invoking a function with a function Constructor</li>
+<li>Invoking a function as a method</li>
+</ol>
+<p>call(), apply(), bind()</p>
+</li>
+</ol>
+</script></p></li></ol>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/14/JQuery-Questions/" rel="next" title="JQuery Questions">
+                <i class="fa fa-chevron-left"></i> JQuery Questions
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/18/JavaScript-Basic-demo10/" rel="prev" title="JavaScript Basic demo10">
+                JavaScript Basic demo10 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Chengsheng" />
+          <p class="site-author-name" itemprop="name">Chengsheng</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal Blog</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chengsheng</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

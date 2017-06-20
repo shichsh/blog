@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="shichsh">
 <meta property="og:description" content="Spring FeaturesSpring MVC is different from other MVC frameworks. It is a method driven, not mapping driven framework. Mapping is determined by annotation, instead of explicitly defined in configurati">
 <meta property="og:image" content="http://yoursite.com/media/7B6741661725AD913E010FBDB208E02D.jpg">
-<meta property="og:updated_time" content="2017-05-15T19:23:58.000Z">
+<meta property="og:updated_time" content="2017-05-15T19:52:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring MVC">
 <meta name="twitter:description" content="Spring FeaturesSpring MVC is different from other MVC frameworks. It is a method driven, not mapping driven framework. Mapping is determined by annotation, instead of explicitly defined in configurati">
@@ -381,6 +381,11 @@
 <li><p>Here is the content of HelloController.java:</p>
  <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.mercury.controller;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</div><div class="line"><span class="keyword">import</span> javax.servlet.http.HttpSession;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</div><div class="line"><span class="keyword">import</span> org.springframework.ui.ModelMap;</div><div class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</div><div class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</div><div class="line"><span class="keyword">import</span> org.springframework.web.servlet.ModelAndView;</div><div class="line"></div><div class="line"><span class="meta">@Controller</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</div><div class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)  <span class="comment">// or ("hello.html")</span></div><div class="line">	<span class="function"><span class="keyword">public</span> ModelAndView <span class="title">sayHello</span><span class="params">(HttpServletRequest request)</span> </span>&#123;</div><div class="line">		String name = request.getParameter(<span class="string">"name"</span>); <span class="comment">// http://localhost:8080/SpringMVCDemo/hello.html?name=bob</span></div><div class="line">		ModelAndView mav = <span class="keyword">new</span> ModelAndView();</div><div class="line">		mav.setViewName(<span class="string">"hello"</span>);</div><div class="line">		mav.addObject(<span class="string">"title"</span>, <span class="string">"Hello "</span> + name + <span class="string">", welcom to Spring MVC!"</span>);</div><div class="line">		<span class="keyword">return</span> mav;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/main"</span>)</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">goMain</span><span class="params">(ModelMap model, HttpSession session)</span> </span>&#123;</div><div class="line">		model.addAttribute(<span class="string">"msg"</span>, <span class="string">"This is a message from ModelMap"</span>);</div><div class="line">		session.setAttribute(<span class="string">"welcome"</span>, <span class="string">"Welcom from session"</span>);</div><div class="line">		<span class="keyword">return</span> <span class="string">"main"</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"/data"</span>)</div><div class="line">	<span class="meta">@ResponseBody</span> <span class="comment">// return data</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getData</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"This is data, not a url"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
+</ol>
+<blockquote>
+<p>@ResponseBody means it return the data, not going to viewResolver</p>
+</blockquote>
+<ol>
 <li><p>Create a folder called “pages” in WebContent, create two jsp files:<br> hello.jsp:</p>
  <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"&gt;</div><div class="line">&lt;link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"&gt;</div><div class="line">&lt;title&gt;Hello Page&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div class="container"&gt;</div><div class="line">	&lt;h1 style="color: blue"&gt;$&#123;title&#125;&lt;/h1&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <p> main.jsp:</p>
@@ -517,7 +522,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -530,7 +535,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>

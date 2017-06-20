@@ -1,0 +1,884 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Explain \$scope and \$rootScope A property assigned with \$scope cannot be used outside the controller in which it is defined whereas a property assigned with \$rootScope can be used anywhere.  What">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS Questions">
+<meta property="og:url" content="http://yoursite.com/2017/06/18/AngularJS-Questions/index.html">
+<meta property="og:site_name" content="shichsh">
+<meta property="og:description" content="Explain \$scope and \$rootScope A property assigned with \$scope cannot be used outside the controller in which it is defined whereas a property assigned with \$rootScope can be used anywhere.  What">
+<meta property="og:updated_time" content="2017-06-20T15:44:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AngularJS Questions">
+<meta name="twitter:description" content="Explain \$scope and \$rootScope A property assigned with \$scope cannot be used outside the controller in which it is defined whereas a property assigned with \$rootScope can be used anywhere.  What">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/06/18/AngularJS-Questions/"/>
+
+
+
+
+
+  <title>AngularJS Questions | shichsh</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-98629548-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">shichsh</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">As in all things, you get to have whatever you choose.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-geek">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-apple"></i> <br />
+            
+            Geek
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/18/AngularJS-Questions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chengsheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shichsh">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                AngularJS Questions
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-18T13:06:15-04:00">
+                2017-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <a id="more"></a>
+<ol>
+<li><p>Explain \$scope and \$rootScope<br> A property assigned with \$scope cannot be used outside the controller in which it is defined whereas a property assigned with \$rootScope can be used anywhere.</p>
+</li>
+<li><p>What is MVC pattern in angular?<br> •  View, which is the HTML. Components<br> •    Model, which is the data available for the current view.<br> •    Controller, which is the JavaScript function that makes/changes/removes/controls the data.</p>
+</li>
+<li><p>Explain two way data binding<br> When data in the model changes, the view reflects the change, and when data in the view changes, the model is updated as well.<br> internal process: For example, when you change input field data which is bind with ng-model, a watcher is triggered, then the $scope is dirty, dirty check is triggered, then angular execute the digest cycle to change the data.</p>
+</li>
+<li><p>How angular can store data and information?<br> Angular JS: use service(can be shared)<br> HTML5: local storage, session storage</p>
+</li>
+<li><p>Explain different ways of creating service in angular<br> 4 ways: value, service, factory, provider</p>
+</li>
+<li><p>Difference between service and factory<br> service is corresponding to a constructor<br> factory is corresponding to a function that returns a object</p>
+</li>
+<li><p>How to improve performance in Angular?<br> 1    Minimize/Avoid Watchers<br> 2    Avoid ng-repeat. If you have to use ng-repeat use infinite scrolling or pagination<br> 3    Use Bind once when possible<br> 4    Use \$watchCollection instead of \$watch (with a 3rd parameter)<br> 5    Avoid repeated filters and cache data whenever possible<br> 6    Debounce ng-model<br> 7    Use ng-if instead of ng-show (but confirm that ng-if is actually better for your case<br> 8    Use console.time to benchmark your functions<br> 9    Use native JavaScript or Lodash for slow functions</p>
+</li>
+<li><p>How two-way data binding work? 3.</p>
+</li>
+<li>Describe angular digest cycle. 3.</li>
+<li><p>How does your angular application interact with server?<br>AJAX call<br>\$http, \$resource</p>
+</li>
+<li><p>Explain \$q and deferred object<br>A service that helps you run functions asynchronously, and use their return values (or exceptions) when they are done processing.<br>deferred object: \$q.defer<br>The purpose of the deferred object is to expose the associated Promise instance as well as APIs that can be used for signaling the successful or unsuccessful completion, as well as the status of the task.<br>The purpose of the promise object is to allow for interested parties to get access to the result of the deferred task when it completes.</p>
+</li>
+<li><p>What Angular JS libraries you are familiar with?<br>ng-route, ngResource, ng-animate, ngSnitize</p>
+</li>
+<li><p>How to detect memory leakage in Angular application?<br>DevTools<br>one plugin to detect, closure</p>
+</li>
+<li><p>In your angular application, if there is a table that takes a lot of time to render, what can be the reasons and what is your solution for that?<br>table is too big. Solution: limitTo, pagination </p>
+</li>
+<li><p>Can we inject two angular modules in the same HTML?<br>no<br>dependent module is ok(angular.module( , [here])),<br>if they are different modules, it is not ok<br>var app1 = angular.module(“”, []);<br>var app2 = angular.module(“”, []);</p>
+</li>
+<li><p>Compare service, factory and provider</p>
+</li>
+<li><p>Explain $http, REST API and AJAX call in Angular<br>\$http &amp; \$resource</p>
+</li>
+<li><p>How to communicate and share data between two controllers?<br>3 ways. inject $rootscope, emit broadcast, service</p>
+</li>
+<li><p>Explain \$apply and when use \$apply inside controller?<br>third party change the data and watch doesn’t work, call apply manually</p>
+</li>
+<li><p>How to display HTML content in angular?<br>1.$sce 2.ng-sanitize<br>\$sce处理后会保留元素上的属性和事件，\$sanitize则会过滤掉元素上的属性和事件</p>
+</li>
+<li><p>How to solve cross domain issue?<br>CROS issue</p>
+</li>
+<li><p>How to do error handling in Angular?<br>Use a decorator, at config time using the \$provide service, on the \$exceptionHandler service to perform custom actions when exceptions occur.</p>
+</li>
+<li><p>What is Angular Module?<br>main: a module as a container for the different parts of your app – controllers, services, filters, directives<br>dependent: </p>
+</li>
+<li><p>Give directive examples and how to use them?<br>customized directive, 4 types: element, attribute, class, comment.<br>scope, template, template URL, link, compile function</p>
+</li>
+<li><p>Explain custom directives 24.</p>
+</li>
+<li><p>How to test Angular JS?<br>protractor (Unit testing) </p>
+</li>
+<li><p>Tell me three ways to implement route?<br>ng-route, ui-router</p>
+</li>
+<li><p>Tell me three ways to communicate between modules. </p>
+</li>
+<li><p>Difference between ng-if and ng-show</p>
+</li>
+<li><p>How to communicate between angular scopes?</p>
+</li>
+<li>Difference between controller and service </li>
+<li>How does angular work as MVC framework</li>
+<li><p>Difference between RouteProvider and StateProvider<br>ng-route, ui-router<br>ui-router: based on state<br>ui-Route: based on url</p>
+</li>
+<li><p>In your project, how do you use controller or directive?</p>
+</li>
+<li><p>Difference between MVC and MVVM?<br>view module</p>
+</li>
+<li><p>What is DI and how to use it?<br>dependent injection (and $injector)</p>
+</li>
+<li><p>Difference between post and get in AJAX call<br>3: performance, security, limitation</p>
+</li>
+<li><p>How angular implement one page application?</p>
+</li>
+</ol>
+<ol>
+<li><p>Did you write database connection with Angular?<br>no, use AJAX call to communicate</p>
+</li>
+<li><p>How does Angular maintain token?<br>passport.js login, J2EE, token hold your info</p>
+</li>
+<li><p>How to maintain the token when you are refreshing the page?</p>
+</li>
+<li>Did you hear about JWT(JSON Web Token)?</li>
+<li><p>How does inner scope communicate with outer scope?<br>son-&gt;parent inheritance. parent-&gt;son. son use emit to parent</p>
+</li>
+<li><p>Do you know AMD (Asynchronous Module Dependencies)?</p>
+</li>
+<li>Do you use require.js? Why do you need require.js with angular? dependecy</li>
+<li><p>How do you mention required dependent modules?<br>app.module()</p>
+</li>
+<li><p>If your browser does not support Angular JS, what should you do?<br>updated your browser</p>
+</li>
+<li><p>What are the problems solved by promise?<br>callback function and holds data</p>
+</li>
+<li><p>What are the differences between \$q.all and \$q.allSettled? </p>
+</li>
+<li><p>Do you know protractor?<br>Unit test for Angular JS</p>
+</li>
+<li><p>You have some angular action, make http request, make JSON back, what kinds of thing will you do?<br>AJAX workflow</p>
+</li>
+<li><p>Explain ngRoute</p>
+</li>
+<li><p>Describe angular lifecycle. In which state watchers are installed?<br>digest cycle, binding -&gt; watch<br>when you bind data then you have watchers</p>
+</li>
+<li><p>How does watch affect performance in Angular?<br>watch by value<br>watch by reference is the best</p>
+</li>
+<li><p>Difference between one-way binding and two-way binding. In what circustance you use one-way binding and what is the reason?<br>one-way binding: ng-bind, double brace . It is for read only data<br>two-way binding: ng-model, double brace</p>
+</li>
+<li><p>How to use Angular to simulate multi-threading?<br>promise callback</p>
+</li>
+<li><p>Did you use chart.js in Angular? </p>
+</li>
+<li><p>How do you use ng-repeat?</p>
+</li>
+<li><p>How to handle exception in Angular? </p>
+</li>
+<li>Explain filter and custom filter in Angular</li>
+<li>Explain Angular timezone and angular-locale</li>
+<li><p>Explain ui-Router</p>
+</li>
+<li><p>Difference between isolated scope and shared scope</p>
+</li>
+<li><p>When would you create directive to attribute only?<br>customize event</p>
+</li>
+<li><p>Tell me three ways to create directive<br>4 ways</p>
+</li>
+<li><p>What is the directive naming convention?<br>camel </p>
+</li>
+<li><p>Where do you save data?<br> service</p>
+</li>
+<li><p>Given two controllers, controller a has data, how can controller b get data from controller a?<br>emit brodcast</p>
+</li>
+<li><p>How to write a custom directive?</p>
+</li>
+<li>Describe different types of scopes root, general, isolated</li>
+<li>Explain angular.bootstrap  launch angular</li>
+<li>Explain angular.injector</li>
+<li>How to improve watcher performance?</li>
+<li>Explain isolated scope</li>
+<li>Difference between emit and broadcast</li>
+<li>Difference between compile and link in custom directive?</li>
+<li>Explain scope life cycle</li>
+<li><p>How to implement closure in Angular?<br>In factory</p>
+</li>
+<li><p>How to implement nested view?<br>ui-route</p>
+</li>
+<li><p>Which company created Angular JS? Google</p>
+</li>
+<li>Difference between ngRoute and ui-Route</li>
+<li>When do we use ng-model?</li>
+<li><p>How to use url routing?<br>ng-route</p>
+</li>
+<li><p>How do you do debug in Angular?<br>(Answer: batarang)</p>
+</li>
+<li><p>What is the framework in Angular for automatic testing? protractor</p>
+</li>
+<li>Explain validation in Angular</li>
+<li><p>How to create reusable component?<br>element directives</p>
+</li>
+<li><p>How to do autocompletion like google search implementation in angular? filter</p>
+</li>
+<li>Design a gender selection component (with different type argument) </li>
+<li><p>What is the problem in Angular JS and how to improve?<br>watch too much, low performance</p>
+</li>
+<li><p>What is the problem of ng-repeat and how to solve?<br>too big<br>limitation, pagination</p>
+</li>
+<li><p>How do you find the number of $watchers?</p>
+</li>
+<li>How do you optimize the page application?</li>
+<li><p>How to parse three values from page A to page B?<br>service</p>
+</li>
+<li><p>What you used to achieve ajax call?<br>\$http, \$resource</p>
+</li>
+<li><p>The advantage and disadvantage of \$http and \$resource<br>\$resource REST API,<br>In REST API, too much to write in $http</p>
+</li>
+<li><p>How do you find out a page with bad performance?</p>
+</li>
+</ol>
+<ol>
+<li>Tell me the service used in angular and why use these service?</li>
+<li>What is the challenge in using $http?</li>
+<li>What is one-time binding?</li>
+<li>Angular directive related: scope, link, compile</li>
+<li><p>Scenario: if you have [username, password, email] in angular, write code<br>to use this field to communicate to back-end (web service).<br>AJAX call</p>
+</li>
+<li><p>Scenario: if you have email, or username only allow alphebeta, write code<br>in the scenario to validate it.<br>regular expression</p>
+</li>
+<li><p>Scenario: 10 screen, each screen has different panels, each panel you need<br>to call API to get data. How to design this?<br>service </p>
+</li>
+<li><p>How to start multiple ng-app?<br>.bootstrap</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/17/Terminology/" rel="prev" title="Terminology">
+                Terminology <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Chengsheng" />
+          <p class="site-author-name" itemprop="name">Chengsheng</p>
+           
+              <p class="site-description motion-element" itemprop="description">Personal Blog</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Chengsheng</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
