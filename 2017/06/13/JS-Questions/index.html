@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/13/JS-Questions/index.html">
 <meta property="og:site_name" content="shichsh">
 <meta property="og:description" content="Basic JavaScript questions">
-<meta property="og:updated_time" content="2017-06-23T02:48:59.000Z">
+<meta property="og:updated_time" content="2017-07-05T20:51:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS Questions">
 <meta name="twitter:description" content="Basic JavaScript questions">
@@ -395,26 +395,24 @@
 </li>
 <li><p>How to implement multi-threading in JS?<br>JS runs in a single execution thread, but we can do is simulate multi-threading.</p>
 </li>
-<li><p>How can you implement abstract class in JavaScript?<br>function A() {</p>
-<pre><code>if (this instanceof A) 
-return error;
-</code></pre><p>}</p>
+<li><p>How can you implement abstract class in JavaScript?  </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (<span class="keyword">this</span> <span class="keyword">instanceof</span> A) </div><div class="line">	<span class="keyword">return</span> error;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>Difference between new and Object.create?    create -&gt; child object<br>the create() method only uses the prototype and not the constructor.</p>
+</ol>
+<ol>
+<li><p>Difference between new and Object.create?<br>create -&gt; child object<br>the create() method only uses the prototype and not the constructor.</p>
 </li>
 <li><p>Tell me ES6 new features. How to convert ES6 to ES5?<br>Classes, Modules, Promises</p>
 </li>
 <li><p>What are JS primitive types?<br>number, boolean, string, undefined, null </p>
 </li>
-<li><p>How to create an employee object?<br>constructor<br>var employee = { // key - value pair </p>
-<pre><code>name: &quot;Alice&quot;,
-age: 30,
-hello: function() {
-    return &quot;hello &quot; + this.name;
-}
-</code></pre><p>};</p>
+<li><p>How to create an employee object?<br>constructor</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> employee = &#123; <span class="comment">// key - value pair </span>	name: <span class="string">"Alice"</span>,	<span class="attr">age</span>: <span class="number">30</span>,	<span class="attr">hello</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;		<span class="keyword">return</span> <span class="string">"hello "</span> + <span class="keyword">this</span>.name;	&#125;&#125;;</div></pre></td></tr></table></figure>
 </li>
-<li><p>What is associative array in JS?    var a = []; a.x = 1; a.y=”abc”<br>Arrays with named indexes are called associative arrays. But JS does not support it. It supports number indexes.</p>
+</ol>
+<ol>
+<li><p>What is associative array in JS?</p>
+<p>var a = []; a.x = 1; a.y=”abc”<br>Arrays with named indexes are called associative arrays. But JS does not support it. It supports number indexes.</p>
 </li>
 <li><p>How to change scope of this?<br>User call(), apply() and bind() method.</p>
 </li>
@@ -444,11 +442,11 @@ hello: function() {
 </li>
 <li><p>How does the method in parent scope have access to the variables in the child scope?<br>call(), apply()</p>
 </li>
-<li><p>How do you write promise?<br>new Promise(function(resolve, reject) {</p>
-<pre><code>setTimeout(function() {
-}
-</code></pre><p>}.then(function() {<br>});</p>
+<li><p>How do you write promise?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;	setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	&#125;</div><div class="line">&#125;.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
+</ol>
+<ol>
 <li><p>Explain JS strict mode<br>make it easier to write secure JavaScript<br>E.g. it is not allowed to use a variable or object without declaring it. not allowed to delete a variable, object or function. </p>
 </li>
 <li><p>How to optimize the size of your JS project? minimum version</p>
@@ -481,16 +479,11 @@ hello: function() {
 </li>
 <li><p>Is callback synchronous or asynchronous?<br>both</p>
 </li>
-<li><p>Show me callback hell<br>function async(arg, callback) {<br>  console.log(‘参数为 ‘ + arg +’ , 1秒后返        回结果’);<br>  setTimeout(function() { callback(arg *         2); }, 1000);<br> }<br>async(1, function(value){<br>  async(value, function(value){</p>
-<pre><code>async(value, function(value){
-  async(value, function(value){
-    async(value, function(value){
-      async(value, final);
-    });
-  });
-});
-</code></pre><p>  });<br>});</p>
+<li><p>Show me callback hell</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">async</span>(<span class="params">arg, callback</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'参数为 '</span> + arg +<span class="string">' , 1秒后返回结果'</span>);</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; callback(arg * <span class="number">2</span>); &#125;, <span class="number">1000</span>);</div><div class="line"> &#125;</div><div class="line"><span class="keyword">async</span>(<span class="number">1</span>, <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">  <span class="keyword">async</span>(value, <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">    <span class="keyword">async</span>(value, <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">      <span class="keyword">async</span>(value, <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">        <span class="keyword">async</span>(value, <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">          <span class="keyword">async</span>(value, final);</div><div class="line">        &#125;);</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
+</ol>
+<ol>
 <li><p>Different ways to invoke a function in Javascript </p>
 <ol>
 <li>Invoking a function as a function<br> foo();<br> foo() == window.foo()</li>

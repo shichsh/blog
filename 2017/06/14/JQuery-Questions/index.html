@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/14/JQuery-Questions/index.html">
 <meta property="og:site_name" content="shichsh">
 <meta property="og:description" content="JQuery Questions">
-<meta property="og:updated_time" content="2017-07-05T20:27:52.000Z">
+<meta property="og:updated_time" content="2017-07-05T20:47:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JQuery Questions">
 <meta name="twitter:description" content="JQuery Questions">
@@ -423,17 +423,11 @@
 <li><p>Select nth element using jquery<br>$().eq(n - 1);</p>
 </li>
 <li><p>Use either jQuery or angular to write a service call(to post username and password)</p>
-<p>jQuery: AJAX call<br>$.ajax({</p>
-<pre><code>type:&apos;Get&apos;,
-url:&apos;http://mysite.com/mywebservice&apos;,
-success: function(data) {
- alert(data);
-}
-</code></pre><p>})    </p>
-<p>Angular: \$http<br>\$http.get(url)<br>.then(function(response) {</p>
-<pre><code>$scope.myWelcome = response.data;
-</code></pre><p>});</p>
+<p>jQuery: AJAX call </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">	$.ajax(&#123;</div><div class="line">		<span class="attr">type</span>:<span class="string">'Get'</span>,</div><div class="line">		<span class="attr">url</span>:<span class="string">'http://mysite.com/mywebservice'</span>,</div><div class="line">		<span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">		 alert(data);</div><div class="line">		&#125;</div><div class="line">	&#125;)	</div><div class="line">	</div><div class="line">	Angular: $http </div><div class="line">	$http.get(url)</div><div class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">        $scope.myWelcome = response.data;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 </li>
+</ol>
+<ol>
 <li><p>jQuery event Propagation</p>
 </li>
 <li><p>What is the main reason you use jQuery and Angular JS?</p>
