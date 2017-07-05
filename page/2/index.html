@@ -347,16 +347,14 @@
 
       
         
-          
-            <h2 id="JS-Promise-continue"><a href="#JS-Promise-continue" class="headerlink" title="JS Promise (continue)"></a>JS Promise (continue)</h2><p>```JavaScript<br>var assert = require(“assert”);</p>
-<p>function task1() {<br>    console.log(“Executing task1”);<br>}</p>
-<p>function task2() {<br>    console.log(“Executing task2”);<br>}</p>
-<p>function task3() {<br>    console.log(“Executing task3”);<br>}</p>
-<p>function t1() {<br>    return new Promise(function(resolve, reject) {<br>        setTimeout(function() {<br>            task1();<br>            resolve(“Task1 is finished”);<br>        }, 500);<br>    });<br>}</p>
-<p>function t2() {<br>    return new Promise(function(resolve, reject) {<br>        setTimeout(function() {<br>            task2();<br>            resolve(“Task2 is finished”);<br>        }, 1000);<br>    });<br>}</p>
-<p>function t3() {<br>    return new Promise(function(resolve, reject) {<br>        setTimeout(function() {<br>            task3();<br>            // resolve(“Task3 is finished”);<br>            reject(“Task3 is rejected!”);<br>        }, 700);<br>    });<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">### Three status in promise: pending, fulfilled(resolved), rejected</div><div class="line"></div><div class="line">```JavaScriptvar promise = t1();promise.then(function(resp) &#123;	console.log(resp);	return t2();&#125;).then(function(resp) &#123;	console.log(resp);	return t3();&#125;).then(function(resp) &#123;	// console.log(resp);//&#125;);&#125;, function(error) &#123;	console.log(error);&#125;);// if status is fulfilled, it hold the data foreverpromise.then(function(resp) &#123;   // still hold the data, won&apos;t use 500ms	assert.equal(&quot;Task1 is finished&quot;, resp);&#125;);// Promise / Deferred Object(inheritance from Promise)// JS regular expression// var x = &quot;^[A-Z]&quot;, x = /^[A-Z]/</div></pre></td></tr></table></figure></p>
-
-          
+          <h2 id="JS-Promise-continue"><a href="#JS-Promise-continue" class="headerlink" title="JS Promise (continue)"></a>JS Promise (continue)</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/18/JavaScript-Basic-demo10/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -473,31 +471,14 @@
 
       
         
-          
-            <h2 id="JS-Promise"><a href="#JS-Promise" class="headerlink" title="JS Promise"></a>JS Promise</h2><pre><code class="JavaScript"><span class="keyword">var</span> assert = <span class="built_in">require</span>(<span class="string">"assert"</span>);
-
-<span class="comment">// Callback function</span>
-setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-    <span class="built_in">console</span>.log(<span class="string">"This is a callback function"</span>);
-}, <span class="number">100</span>);
-<span class="built_in">console</span>.log(<span class="string">"After callback function"</span>);
-<span class="xml"><span class="comment"><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">### Command Pattern(GoF)(sync) step by stepint f(int x) &#123;	return 2 * x;&#125;int y = f(10);print(y); -&gt; 20y can not do anything requset - response pattern</div><div class="line">********************(async) do togetherint z = 0;void f(int x) &#123;	z = 2 * x;&#125;f(10);print(z);req resp third party```JavaScriptfunction task1() &#123;	console.log(&quot;Executing task1&quot;);&#125;function task2() &#123;	console.log(&quot;Executing task2&quot;);&#125;function task3() &#123;	console.log(&quot;Executing task3&quot;);&#125;// Callback Hells -&gt; asyncsetTimeout(function() &#123;	task1();	setTimeout(function() &#123;		console.log(&quot;End of Task1&quot;);		task2();		setTimeout(function() &#123;			console.log(&quot;End of Task2&quot;);			task3();			console.log(&quot;End of Task3&quot;);		&#125;, 700)	&#125;, 1000)&#125;, 500)In JS, promise solve the callback hell problem</div></pre></td></tr></table></figure></span>
-
-* A trick
-
-```JavaScript
-function foo() {
-    return  // return + new line == return ;
-    {
-        name: "Alice"
-    };
-}
-
-var x = foo()
-x -&gt; undefined</span>
-</code></pre>
-
-          
+          <h2 id="JS-Promise"><a href="#JS-Promise" class="headerlink" title="JS Promise"></a>JS Promise</h2>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/18/JavaScript-Basic-demo09/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -614,19 +595,19 @@ x -&gt; undefined</span>
 
       
         
-          
-            <h2 id="JS-Closure"><a href="#JS-Closure" class="headerlink" title="JS Closure"></a>JS Closure</h2><blockquote>
+          <h2 id="JS-Closure"><a href="#JS-Closure" class="headerlink" title="JS Closure"></a>JS Closure</h2><blockquote>
 <p>JS closure is a function that is defined in another function. The inner function can access all the local variables of the outer function. If the inner function is returned, then the local variable of the outer function is still alive after the outer function is executed.</p>
 </blockquote>
 <ul>
 <li>Disadvantage: Closure might result memory leak</li>
 </ul>
-<p>```JavaScript<br>var assert = require(“assert”);</p>
-<p>function outer() {<br>    var m = 10;<br>    return function(x) {<br>        return x * m;<br>    }<br>}<br>var inner = outer();        // Now inner is a returned function that holds local variable m<br>assert.equal(20, inner(2));<br>assert.ok(typeof inner === “function”);</p>
-<p>// Module Pattern<br>function getCounter() {<br>    var count = 0;<br>    return {<br>        getCount: function() {<br>            return count;<br>        },<br>        setCount: function(c) {<br>            count = c;<br>        },<br>        increase: function() {<br>            count++;<br>        }<br>    }<br>}<br>var myCount = getCounter();<br>assert.equal(0, myCount.getCount());<br>myCount.setCount(10);<br>assert.equal(10, myCount.getCount());<br>myCount.increase();<br>assert.equal(11, myCount.getCount());<br>assert.equal(undefined, myCount.count);<br>myCount.count = 100;<br>assert.equal(11, myCount.getCount());<br>assert.equal(100, myCount.count);</p>
-<p>// An example<br>function MyClass() {<br>    this.x = 100; // For the first time, “this” is myClass<br>    var y = “abc”;<br>    var getX = function() {<br>        console.log(this.x);  // For the first time, “this” is window, window has no x variable<br>        console.log(y);<br>    };<br>    getX();   // getX.call(this)<br>    this.getY = function() {<br>        console.log(this.x);<br>        console.log(y);<br>    }<br>}<br>var myClass = new MyClass();<br>myClass.getY();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">## Dynamic Naming Space -&gt; dependency injection</div><div class="line"></div><div class="line">```JavaScriptfunction fetch(context) &#123;	var count = 0;	context.getCount = function() &#123;		return count;	&#125;;	context.setCount = function(c) &#123;		count = c;	&#125;&#125;var o = &#123;count: 100&#125;;fetch(o);assert.equal(0, o.getCount());o.setCount(10);assert.equal(10, o.getCount());assert.equal(100, o.count);// Application 1: Singletonvar MySingle = (function() &#123;	var instance;	return &#123;		getInstance: function() &#123;			if (!instance) instance = new Object();			return instance;		&#125;	&#125;&#125;)();var ms1 = MySingle.getInstance();var ms2 = MySingle.getInstance();assert.ok(ms1===ms2);// Application 2: Define a function that returns 1 at the first, // returns 2 at the second time, and so onvar increase = (function() &#123;	var count = 1;	return function() &#123;		return count++;	&#125;&#125;)();assert.equal(1, increase());assert.equal(2, increase());assert.equal(3, increase());// Application 3: for (var i = 1; i &lt;= 5; i++) &#123;	/*	setTimeout(function() &#123;		console.log(i);	&#125;, 100 * i);  	*/	// same to set 0 ms, the callback function will be put to 	// the queue at last	setTimeout(handle(i), 0);&#125;// setTimeout(callback, ms) // callback functionfunction handle(index) &#123;	return function() &#123;		console.log(index);	&#125;&#125;</div></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/18/JavaScript-Basic-demo08/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

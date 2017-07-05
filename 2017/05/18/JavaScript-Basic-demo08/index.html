@@ -97,7 +97,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/18/JavaScript-Basic-demo08/index.html">
 <meta property="og:site_name" content="shichsh">
 <meta property="og:description" content="JS Closure JS closure is a function that is defined in another function. The inner function can access all the local variables of the outer function. If the inner function is returned, then the local">
-<meta property="og:updated_time" content="2017-05-18T18:45:06.000Z">
+<meta property="og:updated_time" content="2017-07-05T20:28:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript Basic demo08">
 <meta name="twitter:description" content="JS Closure JS closure is a function that is defined in another function. The inner function can access all the local variables of the outer function. If the inner function is returned, then the local">
@@ -354,6 +354,7 @@
 <ul>
 <li>Disadvantage: Closure might result memory leak</li>
 </ul>
+<a id="more"></a>
 <p>```JavaScript<br>var assert = require(“assert”);</p>
 <p>function outer() {<br>    var m = 10;<br>    return function(x) {<br>        return x * m;<br>    }<br>}<br>var inner = outer();        // Now inner is a returned function that holds local variable m<br>assert.equal(20, inner(2));<br>assert.ok(typeof inner === “function”);</p>
 <p>// Module Pattern<br>function getCounter() {<br>    var count = 0;<br>    return {<br>        getCount: function() {<br>            return count;<br>        },<br>        setCount: function(c) {<br>            count = c;<br>        },<br>        increase: function() {<br>            count++;<br>        }<br>    }<br>}<br>var myCount = getCounter();<br>assert.equal(0, myCount.getCount());<br>myCount.setCount(10);<br>assert.equal(10, myCount.getCount());<br>myCount.increase();<br>assert.equal(11, myCount.getCount());<br>assert.equal(undefined, myCount.count);<br>myCount.count = 100;<br>assert.equal(11, myCount.getCount());<br>assert.equal(100, myCount.count);</p>

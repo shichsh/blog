@@ -347,200 +347,16 @@
 
       
         
-          
-            <a id="more"></a>
-<ol>
-<li><p>Explain \$scope and \$rootScope<br> A property assigned with \$scope cannot be used outside the controller in which it is defined whereas a property assigned with \$rootScope can be used anywhere.</p>
-</li>
-<li><p>What is MVC pattern in angular?<br> •  View, which is the HTML. Components<br> •    Model, which is the data available for the current view.<br> •    Controller, which is the JavaScript function that makes/changes/removes/controls the data.</p>
-</li>
-<li><p>Explain two way data binding<br> When data in the model changes, the view reflects the change, and when data in the view changes, the model is updated as well.<br> internal process: For example, when you change input field data which is bind with ng-model, a watcher is triggered, then the $scope is dirty, dirty check is triggered, then angular execute the digest cycle to change the data.</p>
-</li>
-<li><p>How angular can store data and information?<br> Angular JS: use service(can be shared)<br> HTML5: local storage, session storage</p>
-</li>
-<li><p>Explain different ways of creating service in angular<br> 4 ways: value, service, factory, provider</p>
-</li>
-<li><p>Difference between service and factory<br> service is corresponding to a constructor<br> factory is corresponding to a function that returns a object</p>
-</li>
-<li><p>How to improve performance in Angular?<br> 1    Minimize/Avoid Watchers<br> 2    Avoid ng-repeat. If you have to use ng-repeat use infinite scrolling or pagination<br> 3    Use Bind once when possible<br> 4    Use \$watchCollection instead of \$watch (with a 3rd parameter)<br> 5    Avoid repeated filters and cache data whenever possible<br> 6    Debounce ng-model<br> 7    Use ng-if instead of ng-show (but confirm that ng-if is actually better for your case<br> 8    Use console.time to benchmark your functions<br> 9    Use native JavaScript or Lodash for slow functions</p>
-</li>
-<li><p>How two-way data binding work? 3.</p>
-</li>
-<li>Describe angular digest cycle. 3.</li>
-<li><p>How does your angular application interact with server?<br>AJAX call<br>\$http, \$resource</p>
-</li>
-<li><p>Explain \$q and deferred object<br>A service that helps you run functions asynchronously, and use their return values (or exceptions) when they are done processing.<br>deferred object: \$q.defer<br>The purpose of the deferred object is to expose the associated Promise instance as well as APIs that can be used for signaling the successful or unsuccessful completion, as well as the status of the task.<br>The purpose of the promise object is to allow for interested parties to get access to the result of the deferred task when it completes.</p>
-</li>
-<li><p>What Angular JS libraries you are familiar with?<br>ng-route, ngResource, ng-animate, ngSnitize</p>
-</li>
-<li><p>How to detect memory leakage in Angular application?<br>DevTools<br>one plugin to detect, closure</p>
-</li>
-<li><p>In your angular application, if there is a table that takes a lot of time to render, what can be the reasons and what is your solution for that?<br>table is too big. Solution: limitTo, pagination </p>
-</li>
-<li><p>Can we inject two angular modules in the same HTML?<br>no<br>dependent module is ok(angular.module( , [here])),<br>if they are different modules, it is not ok<br>var app1 = angular.module(“”, []);<br>var app2 = angular.module(“”, []);</p>
-</li>
-<li><p>Compare service, factory and provider</p>
-</li>
-<li><p>Explain $http, REST API and AJAX call in Angular<br>\$http &amp; \$resource</p>
-</li>
-<li><p>How to communicate and share data between two controllers?<br>3 ways. inject $rootscope, emit broadcast, service</p>
-</li>
-<li><p>Explain \$apply and when use \$apply inside controller?<br>third party change the data and watch doesn’t work, call apply manually</p>
-</li>
-<li><p>How to display HTML content in angular?<br>1.$sce 2.ng-sanitize<br>\$sce处理后会保留元素上的属性和事件，\$sanitize则会过滤掉元素上的属性和事件</p>
-</li>
-<li><p>How to solve cross domain issue?<br>CROS issue</p>
-</li>
-<li><p>How to do error handling in Angular?<br>Use a decorator, at config time using the \$provide service, on the \$exceptionHandler service to perform custom actions when exceptions occur.</p>
-</li>
-<li><p>What is Angular Module?<br>main: a module as a container for the different parts of your app – controllers, services, filters, directives<br>dependent: </p>
-</li>
-<li><p>Give directive examples and how to use them?<br>customized directive, 4 types: element, attribute, class, comment.<br>scope, template, template URL, link, compile function</p>
-</li>
-<li><p>Explain custom directives 24.</p>
-</li>
-<li><p>How to test Angular JS?<br>protractor (Unit testing) </p>
-</li>
-<li><p>Tell me three ways to implement route?<br>ng-route, ui-router</p>
-</li>
-<li><p>Tell me three ways to communicate between modules. </p>
-</li>
-<li><p>Difference between ng-if and ng-show</p>
-</li>
-<li><p>How to communicate between angular scopes?</p>
-</li>
-<li>Difference between controller and service </li>
-<li>How does angular work as MVC framework</li>
-<li><p>Difference between RouteProvider and StateProvider<br>ng-route, ui-router<br>ui-router: based on state<br>ui-Route: based on url</p>
-</li>
-<li><p>In your project, how do you use controller or directive?</p>
-</li>
-<li><p>Difference between MVC and MVVM?<br>view module</p>
-</li>
-<li><p>What is DI and how to use it?<br>dependent injection (and $injector)</p>
-</li>
-<li><p>Difference between post and get in AJAX call<br>3: performance, security, limitation</p>
-</li>
-<li><p>How angular implement one page application?</p>
-</li>
-<li><p>Did you write database connection with Angular?<br>no, use AJAX call to communicate</p>
-</li>
-<li><p>How does Angular maintain token?<br>passport.js login, J2EE, token hold your info</p>
-</li>
-<li><p>How to maintain the token when you are refreshing the page?</p>
-</li>
-<li>Did you hear about JWT(JSON Web Token)?</li>
-<li><p>How does inner scope communicate with outer scope?<br>son-&gt;parent inheritance. parent-&gt;son. son use emit to parent</p>
-</li>
-<li><p>Do you know AMD (Asynchronous Module Dependencies)?</p>
-</li>
-<li>Do you use require.js? Why do you need require.js with angular? dependecy</li>
-<li><p>How do you mention required dependent modules?<br>app.module()</p>
-</li>
-<li><p>If your browser does not support Angular JS, what should you do?<br>updated your browser</p>
-</li>
-<li><p>What are the problems solved by promise?<br>callback function and holds data</p>
-</li>
-<li><p>What are the differences between \$q.all and \$q.allSettled? </p>
-</li>
-<li><p>Do you know protractor?<br>Unit test for Angular JS</p>
-</li>
-<li><p>You have some angular action, make http request, make JSON back, what kinds of thing will you do?<br>AJAX workflow</p>
-</li>
-<li><p>Explain ngRoute</p>
-</li>
-<li><p>Describe angular lifecycle. In which state watchers are installed?<br>digest cycle, binding -&gt; watch<br>when you bind data then you have watchers</p>
-</li>
-<li><p>How does watch affect performance in Angular?<br>watch by value<br>watch by reference is the best</p>
-</li>
-<li><p>Difference between one-way binding and two-way binding. In what circustance you use one-way binding and what is the reason?<br>one-way binding: ng-bind, double brace . It is for read only data<br>two-way binding: ng-model, double brace</p>
-</li>
-<li><p>How to use Angular to simulate multi-threading?<br>promise callback</p>
-</li>
-<li><p>Did you use chart.js in Angular? </p>
-</li>
-<li><p>How do you use ng-repeat?</p>
-</li>
-<li><p>How to handle exception in Angular? </p>
-</li>
-<li>Explain filter and custom filter in Angular</li>
-<li>Explain Angular timezone and angular-locale</li>
-<li><p>Explain ui-Router</p>
-</li>
-<li><p>Difference between isolated scope and shared scope</p>
-</li>
-<li><p>When would you create directive to attribute only?<br>customize event</p>
-</li>
-<li><p>Tell me three ways to create directive<br>4 ways</p>
-</li>
-<li><p>What is the directive naming convention?<br>camel </p>
-</li>
-<li><p>Where do you save data?<br> service</p>
-</li>
-<li><p>Given two controllers, controller a has data, how can controller b get data from controller a?<br>emit brodcast</p>
-</li>
-<li><p>How to write a custom directive?</p>
-</li>
-<li>Describe different types of scopes root, general, isolated</li>
-<li>Explain angular.bootstrap  launch angular</li>
-<li>Explain angular.injector</li>
-<li>How to improve watcher performance?</li>
-<li>Explain isolated scope</li>
-<li>Difference between emit and broadcast</li>
-<li>Difference between compile and link in custom directive?</li>
-<li>Explain scope life cycle</li>
-<li><p>How to implement closure in Angular?<br>In factory</p>
-</li>
-<li><p>How to implement nested view?<br>ui-route</p>
-</li>
-<li><p>Which company created Angular JS? Google</p>
-</li>
-<li>Difference between ngRoute and ui-Route</li>
-<li>When do we use ng-model?</li>
-<li><p>How to use url routing?<br>ng-route</p>
-</li>
-<li><p>How do you do debug in Angular?<br>(Answer: batarang)</p>
-</li>
-<li><p>What is the framework in Angular for automatic testing? protractor</p>
-</li>
-<li>Explain validation in Angular</li>
-<li><p>How to create reusable component?<br>element directives</p>
-</li>
-<li><p>How to do autocompletion like google search implementation in angular? filter</p>
-</li>
-<li>Design a gender selection component (with different type argument) </li>
-<li><p>What is the problem in Angular JS and how to improve?<br>watch too much, low performance</p>
-</li>
-<li><p>What is the problem of ng-repeat and how to solve?<br>too big<br>limitation, pagination</p>
-</li>
-<li><p>How do you find the number of $watchers?</p>
-</li>
-<li>How do you optimize the page application?</li>
-<li><p>How to parse three values from page A to page B?<br>service</p>
-</li>
-<li><p>What you used to achieve ajax call?<br>\$http, \$resource</p>
-</li>
-<li><p>The advantage and disadvantage of \$http and \$resource<br>\$resource REST API,<br>In REST API, too much to write in $http</p>
-</li>
-<li><p>How do you find out a page with bad performance?</p>
-</li>
+          <ol>
+<li>Explain \$scope and \$rootScope<br> A property assigned with \$scope cannot be used outside the controller in which it is defined whereas a property assigned with \$rootScope can be used anywhere.</li>
 </ol>
-<ol>
-<li>Tell me the service used in angular and why use these service?</li>
-<li>What is the challenge in using $http?</li>
-<li>What is one-time binding?</li>
-<li>Angular directive related: scope, link, compile</li>
-<li><p>Scenario: if you have [username, password, email] in angular, write code<br>to use this field to communicate to back-end (web service).<br>AJAX call</p>
-</li>
-<li><p>Scenario: if you have email, or username only allow alphebeta, write code<br>in the scenario to validate it.<br>regular expression</p>
-</li>
-<li><p>Scenario: 10 screen, each screen has different panels, each panel you need<br>to call API to get data. How to design this?<br>service </p>
-</li>
-<li><p>How to start multiple ng-app?<br>.bootstrap</p>
-</li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/18/AngularJS-Questions/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -657,95 +473,14 @@
 
       
         
-          
-            <a id="more"></a>
-<h2 id="J2EE"><a href="#J2EE" class="headerlink" title="J2EE:"></a>J2EE:</h2><p>Java 2 Platform, Enterprise Edition. It is a computing platform for development and deployment of enterprise software</p>
-<h2 id="Java-Spring"><a href="#Java-Spring" class="headerlink" title="Java Spring:"></a>Java Spring:</h2><p>It is an application framework and inversion of control container for the Java platform. It includes several modules that provide a range of services.</p>
-<h2 id="Spring-Boot"><a href="#Spring-Boot" class="headerlink" title="Spring Boot:"></a>Spring Boot:</h2><p>It is Spring’s solution for creating stand-alone, Spring-based Applications that you can “just run”. This solution is convention-over-configuration </p>
-<h2 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery:"></a>JQuery:</h2><p>jQuery is a JavaScript Library. The main features are HTML/DOM and CSS manipulation, HTML event methods, Effects and animations, AJAX call, Utilities.</p>
-<h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC:"></a>JDBC:</h2><p>Java Database Connectivity. It is an API for Java, which defines how a client may access a database. It provides methods to query and update data in a database, and is oriented to relational databases. </p>
-<h2 id="Hibernate"><a href="#Hibernate" class="headerlink" title="Hibernate:"></a>Hibernate:</h2><p>It is an object-relational mapping tool for the Java. Its primary feature is mapping from Java classes to relational database tables, and mapping from Java data types to SQL data types. Hibernate also provides data query and retrieval methods. </p>
-<h2 id="RESTful-API"><a href="#RESTful-API" class="headerlink" title="RESTful API:"></a>RESTful API:</h2><p>Representational state transfer (REST) is one way of providing inter operation between computer systems on the Internet. RESTful Web services allow requesting systems to access and manipulate textual representations of Web resources using a uniform set of stateless operations. (GET, POST, PUT, DELETE)</p>
-<h2 id="Angular-JS"><a href="#Angular-JS" class="headerlink" title="Angular JS:"></a>Angular JS:</h2><p>It is a JavaScript-based framework for dynamic web application. It lets you use HTML as your template language and lets you extend HTML’s syntax to express your application’s components clearly. AngularJS’s data binding and dependency injection eliminate lots of the code you would otherwise have to write. </p>
-<h2 id="Angular-2"><a href="#Angular-2" class="headerlink" title="Angular 2:"></a>Angular 2:</h2><p>Angular is a TypeScript-based front-end web application platform developed by the Angular Team at Google.</p>
-<p>Difference between Angular JS and Angular 2:<br>Angular was a ground-up rewrite of AngularJS and has many unique qualities.<br>    •    Angular does not have a concept of “scope” or controllers, instead it uses a hierarchy of components as its architectural concept<br>    •    Angular has a simpler expression syntax, focusing on “[ ]” for property binding, and “( )” for event binding<br>    •    Modularity – much core functionality has moved to modules, producing a lighter, faster core<br>    •    Angular recommends the use of Microsoft’s TypeScript language<br>    •    Simpler Routing<br>    •    Replacing controllers and $scope with components and directives – a component is a directive with a template</p>
-<h2 id="Dependency-Injection"><a href="#Dependency-Injection" class="headerlink" title="Dependency Injection:"></a>Dependency Injection:</h2><p>dependency injection is a technique whereby one object supplies the dependencies of another object. A dependency is an object that can be used (a service). An injection is the passing of a dependency to a dependent object (a client) that would use it. That means passing the service to the client, rather than allowing a client to build or find the service.</p>
-<h2 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX:"></a>AJAX:</h2><p>Asynchronous JavaScript And XML. Using AJAX you can send data to back end and and receive data from server without reloading the whole page.</p>
-<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM:"></a>DOM:</h2><p>The Document Object Model (DOM) is a cross-platform API that treats an HTML, XHTML, or XML document as a tree structure where in each node is an object representing a part of the document</p>
-<h2 id="Angular-Directives"><a href="#Angular-Directives" class="headerlink" title="Angular Directives:"></a>Angular Directives:</h2><p>directives are markers on a DOM element that tell AngularJS’s HTML compiler ($compile) to attach a specified behavior to that DOM element. Extend HTML with new attributes.</p>
-<h2 id="MEAN-stack"><a href="#MEAN-stack" class="headerlink" title="MEAN stack:"></a>MEAN stack:</h2><p>MEAN is a JavaScript software stack for building dynamic web sites and web applications. The MEAN stack is MongoDB, Express.js, AngularJS (or Angular), and Node.js.</p>
-<h2 id="Objective-c"><a href="#Objective-c" class="headerlink" title="Objective-c:"></a>Objective-c:</h2><p>Objective-C is a general-purpose, OOP language that adds Smalltalk-style messaging to the C programming language. It was the main programming language used by Apple for the OS X and iOS operating systems.</p>
-<h2 id="Java-Swing"><a href="#Java-Swing" class="headerlink" title="Java Swing:"></a>Java Swing:</h2><p>Swing is a GUI widget toolkit for Java.</p>
-<h2 id="JSP"><a href="#JSP" class="headerlink" title="JSP:"></a>JSP:</h2><p>JavaServer Pages (JSP) is a technology that helps software developers create dynamically generated web pages based on HTML, XML, or other document types. </p>
-<h2 id="EJB"><a href="#EJB" class="headerlink" title="EJB:"></a>EJB:</h2><p>Enterprise JavaBeans (EJB) is one of several Java APIs for modular construction of enterprise software. EJB is a server-side software component that encapsulates business logic of an application.</p>
-<h2 id="JTA"><a href="#JTA" class="headerlink" title="JTA:"></a>JTA:</h2><p>The Java Transaction API (JTA) is one of the Java EE APIs. It enables distributed transactions to be done across multiple resources in a Java environment.</p>
-<h2 id="JPA"><a href="#JPA" class="headerlink" title="JPA:"></a>JPA:</h2><p>Java Persistence API (JPA) is a Java specification that describes the management of relational data in applications using J2EE.</p>
-<h2 id="JNDI"><a href="#JNDI" class="headerlink" title="JNDI:"></a>JNDI:</h2><p>Java Naming and Directory Interface (JNDI) is a Java API for a directory service that allows Java software clients to discover and look up data and objects by a name.</p>
-<h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet:"></a>Servlet:</h2><p>A Java servlet is a Java program that extends the capabilities of a server. Although servlets can respond to any types of requests, they most commonly implement applications hosted on Web servers.</p>
-<h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop:"></a>Hadoop:</h2><p>Hadoop is an software framework used for distributed storage and processing of dataset of big data using the MapReduce programming model. It consists of computer clusters built from commodity hardware.</p>
-<p>UNIX system interface</p>
-<h2 id="Cocoa"><a href="#Cocoa" class="headerlink" title="Cocoa:"></a>Cocoa:</h2><p>Cocoa is Apple’s native object-oriented API for macOS operating system.</p>
-<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML:"></a>HTML:</h2><p>Hypertext Markup Language (HTML) is the standard markup language for creating web pages and web applications. HTML elements are represented by tags.</p>
-<h2 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5:"></a>HTML5:</h2><p>HTML5 is the fifth and current version of the HTML standard.</p>
-<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS:"></a>CSS:</h2><p>Cascading Style Sheets (CSS) is a style sheet language used for describing how HTML elements are to be displayed on screen, paper, or in other media.</p>
-<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript:"></a>JavaScript:</h2><p>JavaScript is a high-level, dynamic, untyped, interpreted run-time language.<br>JavaScript supports event-driven, functional, and imperative (including object-oriented and prototype-based) programming styles. It has an API for working with text, arrays, basic manipulation of the DOM.</p>
-<h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript:"></a>TypeScript:</h2><p>It is a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript, and adds optional static typing and class-based object-oriented programming to the language.</p>
-<h2 id="Swift"><a href="#Swift" class="headerlink" title="Swift:"></a>Swift:</h2><p>It is a compiled programming language developed by Apple Inc.</p>
-<h2 id="UML"><a href="#UML" class="headerlink" title="UML:"></a>UML:</h2><p>Unified Modeling Language is intended to provide a standard way to visualize the design of a system.</p>
-<h2 id="ERD"><a href="#ERD" class="headerlink" title="ERD:"></a>ERD:</h2><p>An entity–relationship model (ER model) describes inter-related things of interest in a specific domain of knowledge.</p>
-<h2 id="EER"><a href="#EER" class="headerlink" title="EER:"></a>EER:</h2><p>The enhanced entity–relationship (EER) model is a high-level or conceptual data model incorporating extensions to the original entity–relationship (ER) model, used in the design of databases.</p>
-<h2 id="Node-JS"><a href="#Node-JS" class="headerlink" title="Node JS:"></a>Node JS:</h2><p>Node.js is an JavaScript run-time environment for executing JavaScript code server-side.</p>
-<h2 id="Express-JS"><a href="#Express-JS" class="headerlink" title="Express JS:"></a>Express JS:</h2><p>It is a web application framework for Node.js. It is designed for building web applications and APIs.</p>
-<h2 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap:"></a>Bootstrap:</h2><p>Bootstrap is a free and open-source front-end web framework for designing websites and web applications. It contains HTML- and CSS-based design templates for forms, buttons, navigation and other interface components, as well as optional JavaScript extensions. Grid System.</p>
-<h2 id="GDB"><a href="#GDB" class="headerlink" title="GDB:"></a>GDB:</h2><p>The GNU Debugger (GDB) runs on many Unix-like systems and works for many programming languages</p>
-<h2 id="JUnit-Test"><a href="#JUnit-Test" class="headerlink" title="JUnit Test:"></a>JUnit Test:</h2><p>JUnit is a unit testing framework for the Java programming language. JUnit has been important in the development of test-driven development.</p>
-<h2 id="Maven"><a href="#Maven" class="headerlink" title="Maven:"></a>Maven:</h2><p>Maven is a build automation tool used primarily for Java projects.<br>Maven is to allow a developer to comprehend the complete state of a development effort in the shortest period of time. </p>
-<h2 id="Log4j"><a href="#Log4j" class="headerlink" title="Log4j:"></a>Log4j:</h2><p>It is a Java-based logging utility. </p>
-<h2 id="D3"><a href="#D3" class="headerlink" title="D3:"></a>D3:</h2><p>D3 is a JavaScript library for producing dynamic, interactive data visualizations in web browsers.</p>
-<h2 id="Spring-IOC"><a href="#Spring-IOC" class="headerlink" title="Spring IOC:"></a>Spring IOC:</h2><p>inversion of control (IoC) is a design principle in which custom-written portions of a computer program receive the flow of control from a generic framework.<br>The container will create the objects, wire them together, configure them, and manage their complete life cycle from creation till destruction.</p>
-<h2 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring AOP:"></a>Spring AOP:</h2><p>aspect-oriented programming (AOP) is a programming paradigm that aims to increase modularity by allowing the separation of cross-cutting concerns. This allows behaviors that are not central to the business logic (such as logging) to be added to a program without cluttering the code core to the functionality.</p>
-<h2 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC:"></a>Spring MVC:</h2><p>It provides Model-View-Controller (MVC) architecture and ready components that can be used to develop flexible and loosely coupled web applications. The MVC pattern results in separating the different aspects of the application (input logic, business logic, and UI logic), while providing a loose coupling between these elements.</p>
-<h2 id="Spring-Data"><a href="#Spring-Data" class="headerlink" title="Spring Data:"></a>Spring Data:</h2><p>It is to provide a familiar and consistent, Spring-based programming model for data access while still retaining the special traits of the underlying data store. </p>
-<h2 id="Spring-Security"><a href="#Spring-Security" class="headerlink" title="Spring Security:"></a>Spring Security:</h2><p>Spring Security is a Java/Java EE framework that provides authentication, authorization and other security features for enterprise applications.</p>
-<h2 id="React"><a href="#React" class="headerlink" title="React:"></a>React:</h2><p>It is an open-source JavaScript library for building user interfaces.</p>
-<h2 id="PostgreSQL"><a href="#PostgreSQL" class="headerlink" title="PostgreSQL:"></a>PostgreSQL:</h2><p>It is an object-relational database management system (ORDBMS) with an emphasis on extensibility and standards compliance. </p>
-<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux:"></a>Linux:</h2><p>Linux is a Unix-like computer operating system assembled under the model of free and open-source software development and distribution. </p>
-<h2 id="Unix"><a href="#Unix" class="headerlink" title="Unix:"></a>Unix:</h2><p>Unix is a family of multitasking, multiuser computer operating systems that derive from the original AT&amp;T Unix.</p>
-<h2 id="XSL"><a href="#XSL" class="headerlink" title="XSL"></a>XSL</h2><p>It is used to refer to a family of languages used to transform and render XML documents.</p>
-<h2 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h2><p>Extensible Markup Language (XML) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. </p>
-<h2 id="Multithreading-HTML-5-and-Java"><a href="#Multithreading-HTML-5-and-Java" class="headerlink" title="Multithreading(HTML 5 and Java)"></a>Multithreading(HTML 5 and Java)</h2><p>multithreading is the ability of a CPU or a single core to execute multiple processes or threads concurrently<br>(HTML 5): A web worker is a JavaScript that runs in the background without affecting the performance of the page. You can continue to do whatever you want while the web worker runs in the background.</p>
-<h2 id="OOP"><a href="#OOP" class="headerlink" title="OOP"></a>OOP</h2><p>Polymorphism(override and overload), Inheritance, Encapsulation, Abstraction<br>It is based on the concept of “objects”, it contains attributes and methods in classes</p>
-<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p>Model–view–controller (MVC) is a software architectural pattern for implementing user interfaces on computers. It divides a application into three parts in order to separate internal representations of information from the ways that information is presented to and accepted from the user. The MVC decouples these major components allowing for efficient code reuse and parallel development.</p>
-<h2 id="Concurrency"><a href="#Concurrency" class="headerlink" title="Concurrency"></a>Concurrency</h2><p>concurrency is the decomposability property of a program, algorithm, or problem into order-independent or partially-ordered components or units. This means that even if the concurrent units of the program, algorithm, or problem are executed out-of-order or in partial order, the final outcome will remain the same. This allows for parallel execution of the concurrent units, which can significantly improve overall speed of the execution in multi-processor and multi-core systems.</p>
-<h2 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h2><p>MongoDB is an open source database that uses a document-oriented data model.<br>MongoDB is built on an architecture of collections and documents. Documents comprise sets of key-value pairs and are the basic unit of data in MongoDB. </p>
-<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>JavaScript Object Notation<br>JSON is a syntax for storing and exchanging data.<br>JSON is an open-standard file format that uses human-readable text to transmit data objects consisting of attribute–value pairs and array data types. It is a common data format used for asynchronous browser/server communication.</p>
-<h2 id="Exception-Handle"><a href="#Exception-Handle" class="headerlink" title="Exception (Handle)"></a>Exception (Handle)</h2><p>Exception handling is the process of responding to the occurrence of exceptions, it often changing the normal flow of program execution. It is provided by specialized programming language constructs or computer hardware mechanisms.</p>
-<h2 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h2><ol>
-<li>rounded corner</li>
-<li>shadow</li>
-<li>flexible box or grid layouts</li>
-<li>media queries</li>
-<li>Background and Borders</li>
-<li>Selectors</li>
-<li>Box Model</li>
-<li>Image Values and Replaced Content</li>
-<li>Text Effects</li>
-<li>2D/3D Transformations</li>
-<li>Animations</li>
-<li>Multiple Column Layout</li>
-<li>User Interface</li>
-</ol>
-<h2 id="HTML5-1"><a href="#HTML5-1" class="headerlink" title="HTML5"></a>HTML5</h2><ol>
-<li>new semantic elements, like &lt;<span></span>header&gt;&lt;<span></span>footer&gt;</li>
-<li>new attribute for form elements like email, date, range</li>
-<li>new graphic elements like &lt;<span></span>svg&gt; and &lt;<span></span>canvas&gt;.</li>
-<li>New multimedia elements: &lt;<span></span>audio&gt; and &lt;<span></span>video&gt;.</li>
-<li>New HTML5 APIs, like HTML Local Storage, HTML web Worker.</li>
-</ol>
-<h2 id="Generic-type"><a href="#Generic-type" class="headerlink" title="Generic type"></a>Generic type</h2><p>Java Generic methods and generic classes enable programmers to specify, with a single method declaration, a set of related methods, or with a single class declaration, a set of related types. It also provide compile-time type safety to catch invalid types at compile time.</p>
-<h2 id="9-methods-in-Class"><a href="#9-methods-in-Class" class="headerlink" title="9 methods in Class"></a>9 methods in Class</h2><p>cefghnnwt</p>
-
-          
+          <h2 id="J2EE"><a href="#J2EE" class="headerlink" title="J2EE:"></a>J2EE:</h2><p>Java 2 Platform, Enterprise Edition. It is a computing platform for development and deployment of enterprise software</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/17/Terminology/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
